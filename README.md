@@ -1,0 +1,1 @@
+# dziadyk_odoo
