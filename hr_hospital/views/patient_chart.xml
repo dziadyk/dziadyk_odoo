@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_patient_chart_tree" model="ir.ui.view">
+        <field name="name">hr.hosp.patient.chart.tree ()</field>
+        <field name="model">hr.hosp.patient.chart</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="finish_date"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hosp_patient_chart_form" model="ir.ui.view">
+        <field name="name">hr.hosp.patient.chart.form ()</field>
+        <field name="model">hr.hosp.patient.chart</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="start_date"/>
+                        <field name="finish_date"/>
+                        <field name="diagnosis_ids" widget="many2one_tags"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="hr_hosp_patient_chart_act_window" model="ir.actions.act_window">
+        <field name="name">Patient chart</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hosp.patient.chart</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem id="hr_hosp_patient_chart_menu"
+               action="hr_hosp_patient_chart_act_window"
+               parent="hr_hosp_catalog_menu"
+               name="Patient chart" sequence="400"/>
+
+</odoo>
