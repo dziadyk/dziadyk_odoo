@@ -7,5 +7,5 @@ class Patient(models.Model):
 
     name = fields.Char()
     active = fields.Boolean(default=True)
-    birthdate = fields.Date('Birth date')
+    birthday = fields.Date('Date of birth')
     chart_ids = fields.Many2many(comodel_name='hr.hosp.patient.chart')
