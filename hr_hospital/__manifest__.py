@@ -9,15 +9,15 @@
     'license': 'OPL-1',
     'version': '15.0.1.0.0',
 
-    'depends': '',
+    'depends': ['base'],  # Якщо модуль, не має прямих залежностей, він повінен мати залежність від базового модуля "base". Також це повинен бути список.
 
     'data': [
         'security/ir.model.access.csv',
-        'views/menu.xml',
-        'views/patient.xml',
-        'views/doctor.xml',
-        'views/diagnosis.xml',
-        'views/patient_chart.xml',
+        'views/hr_hospital_menus.xml',
+        'views/patient_views.xml',
+        'views/doctor_views.xml',
+        'views/diagnosis_views.xml',
+        'views/patient_chart_views.xml',
     ],
 
 }
