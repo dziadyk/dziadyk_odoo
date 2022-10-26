@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import fields, models
 
 
 class PatientChart(models.Model):
@@ -7,7 +7,7 @@ class PatientChart(models.Model):
 
     name = fields.Char()
     active = fields.Boolean(default=True)
-    start_date = fields.Date()  # Необов'язково надавати ім'яб якщо воно співпадає з технічною назвою поля
-    finish_date = fields.Date()  # Необов'язково надавати ім'яб якщо воно співпадає з технічною назвою поля
+    start_date = fields.Date()
+    finish_date = fields.Date()
     diagnosis_ids = fields.Many2many(comodel_name='hr.hosp.diagnosis')
     description = fields.Char()

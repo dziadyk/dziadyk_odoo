@@ -1,4 +1,4 @@
-from odoo import fields, models  # модулі, що імпортуються повинні йти в алфавітному порядку
+from odoo import fields, models, _
 
 
 class Patient(models.Model):
@@ -7,5 +7,7 @@ class Patient(models.Model):
 
     name = fields.Char()
     active = fields.Boolean(default=True)
-    birthday = fields.Date(string='Date of birth')
+    sex = fields.Selection([('male','Male'),('female','Female'),('other','Other')],required=True,default='other')
+    birthday = fields.Date(string='Date of birth',required=True)
+    age = fields.Integer()
     chart_ids = fields.Many2many(comodel_name='hr.hosp.patient.chart')
