@@ -1,7 +1,9 @@
 from . import (
+    person,
     patient,
     doctor,
-    diagnosis,
     patient_chart,
+    diagnosis,
+    disease,
     emergency_contact,
 )

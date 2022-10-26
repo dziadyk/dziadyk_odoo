@@ -9,6 +9,6 @@ class Diagnosis(models.Model):
     active = fields.Boolean(default=True)
     patient_id = fields.Many2one(comodel_name='hr.hosp.patient',required=True)
     doctor_id = fields.Many2one(comodel_name='hr.hosp.doctor',required=True)
-    disease = fields.Char()
+    disease_id = fields.Many2one(comodel_name='hr.hosp.disease',required=True)
     date = fields.Datetime()
     treatment = fields.Text()

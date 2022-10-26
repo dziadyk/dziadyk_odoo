@@ -9,7 +9,7 @@
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="doctor_id"/>
-                <field name="disease"/>
+                <field name="disease_id"/>
                 <field name="date"/>
             </tree>
         </field>
@@ -25,7 +25,7 @@
                         <field name="name"/>
                         <field name="patient_id"/>
                         <field name="doctor_id"/>
-                        <field name="disease"/>
+                        <field name="disease_id"/>
                         <field name="date"/>
                         <field name="treatment"/>
                     </group>
@@ -44,6 +44,6 @@
      <menuitem id="hr_hosp_diagnosis_menu"
                action="hr_hosp_diagnosis_action"
                parent="hr_hosp_catalog_menu"
-               name="Diagnosis" sequence="300"/>
+               name="Diagnosis" sequence="400"/>
 
 </odoo>

@@ -42,6 +42,6 @@
      <menuitem id="hr_hosp_patient_chart_menu"
                action="hr_hosp_patient_chart_act_window"
                parent="hr_hosp_catalog_menu"
-               name="Patient chart" sequence="400"/>
+               name="Patient chart" sequence="300"/>
 
 </odoo>
