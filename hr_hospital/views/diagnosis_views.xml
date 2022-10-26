@@ -7,8 +7,10 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="disease"/>
                 <field name="date"/>
-                <field name="description"/>
             </tree>
         </field>
     </record>
@@ -21,9 +23,11 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                        <field name="disease"/>
                         <field name="date"/>
-                        <field name="doctor_ids" widget="many2many_tags"/>
-                        <field name="description"/>
+                        <field name="treatment"/>
                     </group>
                 </sheet>
             </form>

@@ -8,6 +8,7 @@
             <tree>
                 <field name="name"/>
                 <field name="age"/>
+                <field name="sex"/>
             </tree>
         </field>
     </record>
@@ -18,12 +19,17 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <field name="name"/>
+                        </h3>
+                    </div>
                     <group>
-                        <field name="name"/>
-                        <field name="sex"/>
                         <field name="birthday"/>
                         <field name="age"/>
-                        <field name="chart_ids" widget="many2one_tags"/>
+                        <field name="sex"/>
+                        <field name="passport"/>
+                        <field name="emergency_contact_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
             </form>

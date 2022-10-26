@@ -9,7 +9,9 @@
     'license': 'OPL-1',
     'version': '15.0.1.0.0',
 
-    'depends': ['base'],
+    'depends': [
+        'base',
+    ],
 
     'data': [
         'security/ir.model.access.csv',
@@ -18,6 +20,11 @@
         'views/doctor_views.xml',
         'views/diagnosis_views.xml',
         'views/patient_chart_views.xml',
+        'views/emergency_contact_views.xml',
     ],
+
+    'images': [
+        'static/description/icon.png'
+    ]
 
 }

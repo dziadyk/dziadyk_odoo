@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_emergency_contact_tree" model="ir.ui.view">
+        <field name="name">hr.hosp.emergency.contact.tree ()</field>
+        <field name="model">hr.hosp.emergency.contact</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hosp_emergency_contact_form" model="ir.ui.view">
+        <field name="name">hr.hosp.emergency.contact.form ()</field>
+        <field name="model">hr.hosp.emergency.contact</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <field name="name"/>
+                        </h3>
+                    </div>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="hr_hosp_emergency_contact_action" model="ir.actions.act_window">
+        <field name="name">Emergency contact</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hosp.emergency.contact</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem id="hr_hosp_emergency_contact_menu"
+               action="hr_hosp_emergency_contact_action"
+               parent="hr_hosp_catalog_menu"
+               name="Emergency contact" sequence="500"/>
+
+</odoo>

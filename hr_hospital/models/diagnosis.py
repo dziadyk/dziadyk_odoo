@@ -5,8 +5,10 @@ class Diagnosis(models.Model):
     _name = 'hr.hosp.diagnosis'
     _description = 'Diagnosis'
 
-    name = fields.Char()
+    name = fields.Char(required=True)
     active = fields.Boolean(default=True)
+    patient_id = fields.Many2one(comodel_name='hr.hosp.patient',required=True)
+    doctor_id = fields.Many2one(comodel_name='hr.hosp.doctor',required=True)
+    disease = fields.Char()
     date = fields.Datetime()
-    doctor_ids = fields.Many2many(comodel_name='hr.hosp.doctor')
-    description = fields.Char()
+    treatment = fields.Text()
