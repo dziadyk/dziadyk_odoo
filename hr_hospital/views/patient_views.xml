@@ -40,7 +40,7 @@
                 </sheet>
                 <sheet>
                     <group>
-                        <field name="personal_doctor_id"/>
+                        <field name="doctor_id"/>
                         <field name="emergency_contact_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
