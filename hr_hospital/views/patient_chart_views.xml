@@ -33,7 +33,7 @@
     </record>
 
      <record id="hr_hosp_patient_chart_act_window" model="ir.actions.act_window">
-        <field name="name">Patient chart</field>
+        <field name="name">Patient Chart</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hosp.patient.chart</field>
         <field name="view_mode">tree,form</field>
@@ -42,6 +42,6 @@
      <menuitem id="hr_hosp_patient_chart_menu"
                action="hr_hosp_patient_chart_act_window"
                parent="hr_hosp_catalog_menu"
-               name="Patient chart" sequence="300"/>
+               name="Patient Chart" sequence="300"/>
 
 </odoo>

@@ -35,8 +35,13 @@
                             <field name="passport"/>
                             <field name="phone"/>
                             <field name="email"/>
-                            <field name="emergency_contact_ids" widget="many2many_tags"/>
                         </group>
+                    </group>
+                </sheet>
+                <sheet>
+                    <group>
+                        <field name="personal_doctor_id"/>
+                        <field name="emergency_contact_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
             </form>

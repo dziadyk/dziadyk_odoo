@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_visit_tree" model="ir.ui.view">
+        <field name="name">hr.hosp.visit.tree ()</field>
+        <field name="model">hr.hosp.visit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="doctor_id"/>
+                <field name="patient_id"/>
+                <field name="diagnosis_ids" widget="many2many_tags"/>
+                <field name="reception_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hosp_visit_form" model="ir.ui.view">
+        <field name="name">hr.hosp.visit.form ()</field>
+        <field name="model">hr.hosp.visit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="doctor_id"/>
+                        <field name="patient_id"/>
+                        <field name="diagnosis_ids" widget="many2many_tags"/>
+                        <field name="reception_time"/>
+                        <field name="recommendation"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="hr_hosp_visit_action" model="ir.actions.act_window">
+        <field name="name">Visit</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hosp.visit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem id="hr_hosp_visit_menu"
+               action="hr_hosp_visit_action"
+               parent="hr_hosp_catalog_menu"
+               name="Visit" sequence="800"/>
+
+</odoo>

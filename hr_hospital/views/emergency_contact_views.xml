@@ -36,7 +36,7 @@
     </record>
 
      <record id="hr_hosp_emergency_contact_action" model="ir.actions.act_window">
-        <field name="name">Emergency contact</field>
+        <field name="name">Emergency Contact</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hosp.emergency.contact</field>
         <field name="view_mode">tree,form</field>
@@ -45,6 +45,6 @@
      <menuitem id="hr_hosp_emergency_contact_menu"
                action="hr_hosp_emergency_contact_action"
                parent="hr_hosp_catalog_menu"
-               name="Emergency contact" sequence="600"/>
+               name="Emergency Contact" sequence="700"/>
 
 </odoo>

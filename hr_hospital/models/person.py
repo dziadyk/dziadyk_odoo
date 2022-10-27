@@ -11,4 +11,3 @@ class Person(models.AbstractModel):
     phone = fields.Char()
     email = fields.Char()
     photo = fields.Image()
-

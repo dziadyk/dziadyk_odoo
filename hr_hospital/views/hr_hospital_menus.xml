@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!--  Кореневе меню повинно мати зображення  -->
     <menuitem id="hr_hosp_main_menu"
               name="Hospital"
               web_icon="hr_hospital,static/description/icon.png"

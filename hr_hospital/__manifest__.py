@@ -21,7 +21,9 @@
         'views/patient_chart_views.xml',
         'views/diagnosis_views.xml',
         'views/disease_views.xml',
+        'views/disease_type_views.xml',
         'views/emergency_contact_views.xml',
+        'views/visit_views.xml',
     ],
 
     'images': [
