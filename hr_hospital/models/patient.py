@@ -14,15 +14,28 @@ class Patient(models.Model):
     doctor_id = fields.Many2one(comodel_name='hr.hosp.doctor', string='Personal Doctor')
     emergency_contact_ids = fields.Many2many(comodel_name='hr.hosp.emergency.contact')
 
-    def write(self, vals):
-        if vals.get('doctor_id'):
+    @api.model
+    def create(self, vals):
+        patient = super(Patient, self).create(vals)
+        if vals['doctor_id']:
             doctor_history_dict = {
-                'patient_id': vals['doctor_id'],
-                'doctor_id': self.id,
+                'patient_id': patient.id,
+                'doctor_id': vals['doctor_id'],
                 'datetime': datetime.datetime.now()
             }
             self.env['hr.hosp.personal.doctor.history'].create(doctor_history_dict)
-        return super(Patient, self).write(vals)
+        return patient
+
+    def write(self, vals):
+        patient = super(Patient, self).write(vals)
+        if vals.get('doctor_id'):
+            doctor_history_dict = {
+                'patient_id': self.id,
+                'doctor_id': vals['doctor_id'],
+                'datetime': datetime.datetime.now()
+            }
+            self.env['hr.hosp.personal.doctor.history'].create(doctor_history_dict)
+        return patient
 
     @api.depends('birthday')
     def _compute_age(self):
