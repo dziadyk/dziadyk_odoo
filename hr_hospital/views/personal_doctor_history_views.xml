@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_personal_doctor_history_tree" model="ir.ui.view">
+        <field name="name">hr.hosp.personal.doctor.history.tree ()</field>
+        <field name="model">hr.hosp.personal.doctor.history</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hosp_personal_doctor_history_form" model="ir.ui.view">
+        <field name="name">hr.hosp.personal.doctor.history.form ()</field>
+        <field name="model">hr.hosp.personal.doctor.history</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                        <field name="date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="hr_hosp_personal_doctor_history_action" model="ir.actions.act_window">
+        <field name="name">Personal Doctor History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hosp.personal.doctor.history</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem id="hr_hosp_personal_doctor_history_menu"
+               action="hr_hosp_personal_doctor_history_action"
+               parent="hr_hosp_catalog_menu"
+               name="Personal Doctor History" sequence="900"/>
+
+</odoo>

@@ -24,6 +24,7 @@
         'views/disease_type_views.xml',
         'views/emergency_contact_views.xml',
         'views/visit_views.xml',
+        'views/personal_doctor_history_views.xml',
     ],
 
     'images': [
