@@ -1,3 +1,4 @@
+from datetime import date
 from odoo import _, fields, models
 
 
@@ -30,10 +31,13 @@ class DiseaseReportWizard(models.TransientModel):
             'view_mode': 'form',
             'res_model': 'hr.hosp.disease.report.wizard',
             'target': 'new',
-            'context': {},
+            'context': {'default_year': date.today().year,
+                        'default_month': str(date.today().month)},
         }
 
     def action_get_report(self):
         self.ensure_one()
-        #print('Year', self.year)
-        #print('Month', self.month)
+        # print('Year', self.year)
+        # print('Month', self.month)
+        # print('Year', date.today().year == 2022)
+        # print('Month', date.today().month == 10)
