@@ -49,7 +49,7 @@
 
      <menuitem id="hr_hosp_diagnosis_menu"
                action="hr_hosp_diagnosis_action"
-               parent="hr_hosp_catalog_menu"
+               parent="hr_hosp_hospital_menu"
                name="Diagnosis" sequence="700"/>
 
 </odoo>

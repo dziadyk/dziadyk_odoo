@@ -35,7 +35,7 @@
 
      <menuitem id="hr_hosp_medical_test_type_menu"
                action="hr_hosp_medical_test_type_action"
-               parent="hr_hosp_catalog_menu"
+               parent="hr_hosp_hospital_menu"
                name="Medical Test Type" sequence="1000"/>
 
 </odoo>

@@ -29,6 +29,7 @@
         'views/medical_test_views.xml',
         'views/sample_type_views.xml',
         'wizard/set_personal_doctor_multi_wizard_views.xml',
+        'wizard/disease_report_wizard_views.xml',
     ],
 
     'images': [

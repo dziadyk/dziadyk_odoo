@@ -48,7 +48,7 @@
 
      <menuitem id="hr_hosp_visit_menu"
                action="hr_hosp_visit_action"
-               parent="hr_hosp_catalog_menu"
+               parent="hr_hosp_hospital_menu"
                name="Visit" sequence="400"/>
 
 </odoo>

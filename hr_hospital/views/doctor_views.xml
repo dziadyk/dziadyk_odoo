@@ -51,7 +51,7 @@
 
      <menuitem id="hr_hosp_doctor_menu"
                action="hr_hosp_doctor_act_window"
-               parent="hr_hosp_catalog_menu"
+               parent="hr_hosp_hospital_menu"
                name="Doctor" sequence="200"/>
     <menuitem id="hr_hosp_doctor_main_menu"
                action="hr_hosp_doctor_act_window"

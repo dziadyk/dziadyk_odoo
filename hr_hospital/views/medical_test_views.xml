@@ -43,7 +43,7 @@
 
      <menuitem id="hr_hosp_medical_test_menu"
                action="hr_hosp_medical_test_action"
-               parent="hr_hosp_catalog_menu"
+               parent="hr_hosp_hospital_menu"
                name="Medical Test" sequence="1100"/>
 
 </odoo>

@@ -34,7 +34,7 @@
 
      <menuitem id="hr_hosp_sample_type_menu"
                action="hr_hosp_sample_type_action"
-               parent="hr_hosp_catalog_menu"
+               parent="hr_hosp_hospital_menu"
                name="Sample Type" sequence="1200"/>
 
 </odoo>

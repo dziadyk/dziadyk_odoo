@@ -38,7 +38,7 @@
 
      <menuitem id="hr_hosp_personal_doctor_history_menu"
                action="hr_hosp_personal_doctor_history_action"
-               parent="hr_hosp_catalog_menu"
+               parent="hr_hosp_hospital_menu"
                name="Personal Doctor History" sequence="500"/>
 
 </odoo>
