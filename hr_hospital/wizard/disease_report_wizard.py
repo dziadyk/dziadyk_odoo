@@ -35,5 +35,5 @@ class DiseaseReportWizard(models.TransientModel):
 
     def action_get_report(self):
         self.ensure_one()
-        print('Year',self.year)
-        print('Month', self.month)
+        #print('Year', self.year)
+        #print('Month', self.month)
