@@ -36,6 +36,6 @@
      <menuitem id="hr_hosp_disease_type_menu"
                action="hr_hosp_disease_type_action"
                parent="hr_hosp_catalog_menu"
-               name="Disease Type" sequence="600"/>
+               name="Disease Type" sequence="800"/>
 
 </odoo>

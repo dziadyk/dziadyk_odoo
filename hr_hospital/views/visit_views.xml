@@ -7,7 +7,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="patient_id"/>
-                <field name="planed_date"/>
+                <field name="planned_date"/>
+                <field name="planned_time" widget="float_time"/>
                 <field name="reception_time"/>
                 <field name="take_place"/>
                 <field name="doctor_id"/>
@@ -23,7 +24,8 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="planed_date"/>
+                        <field name="planned_date"/>
+                        <field name="planned_time" widget="float_time"/>
                         <field name="reception_time"/>
                         <field name="take_place"/>
                         <field name="patient_id"/>
@@ -47,6 +49,6 @@
      <menuitem id="hr_hosp_visit_menu"
                action="hr_hosp_visit_action"
                parent="hr_hosp_catalog_menu"
-               name="Visit" sequence="800"/>
+               name="Visit" sequence="400"/>
 
 </odoo>

@@ -45,6 +45,6 @@
      <menuitem id="hr_hosp_emergency_contact_menu"
                action="hr_hosp_emergency_contact_action"
                parent="hr_hosp_catalog_menu"
-               name="Emergency Contact" sequence="700"/>
+               name="Emergency Contact" sequence="600"/>
 
 </odoo>

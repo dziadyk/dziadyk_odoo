@@ -8,7 +8,8 @@ class Visit(models.Model):
 
     active = fields.Boolean(
         default=True, )
-    planed_date = fields.Date()
+    planned_date = fields.Date()
+    planned_time = fields.Float()
     reception_time = fields.Datetime()
     take_place = fields.Boolean()
     doctor_id = fields.Many2one(
@@ -21,23 +22,35 @@ class Visit(models.Model):
         comodel_name='hr.hosp.medical.test', )
     recommendation = fields.Text()
 
-    @api.constrains('planed_date', 'reception_time', 'doctor_id', 'patient_id')
+    @api.constrains('planned_date', 'patient_id')
+    def constrains_planned_visit(self):
+        for obj in self:
+            exist_visits = self.env['hr.hosp.visit'].search_cout(
+                [('id', '!=', obj.id),
+                 ('patient_id', '=', obj.patient_id.id),
+                 ('planned_date', '=', obj.planned_date),
+                 ('planned_time', '=', obj.planned_time)])
+            if exist_visits:
+                raise exceptions.ValidationError(
+                    _('There is already a visit on this time'))
+
+    @api.constrains('planned_date', 'reception_time', 'doctor_id', 'patient_id')
     def constrains_take_place(self):
         for obj in self:
             if obj.take_place:
                 raise exceptions.ValidationError(
-                    _('The visit has already taken place'))
+                    _('Visit has already taken place'))
 
     @api.constrains('active')
     def constrains_active(self):
         for obj in self:
-            if obj.diagnosis_ids:
+            if not obj.active and obj.diagnosis_ids:
                 raise exceptions.UserError(
-                    _('The visit already has a diagnosis'))
+                    _('Visit already has a diagnosis'))
 
     @api.ondelete(at_uninstall=False)
     def _unlink_only_empty_diagnosis(self):
         for obj in self:
             if obj.diagnosis_ids:
                 raise exceptions.UserError(
-                    _('The visit already has a diagnosis'))
+                    _('Visit already has a diagnosis'))

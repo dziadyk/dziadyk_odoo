@@ -41,6 +41,6 @@
      <menuitem id="hr_hosp_doctor_schedule_menu"
                action="hr_hosp_doctor_schedule_act_window"
                parent="hr_hosp_catalog_menu"
-               name="Doctor Schedule" sequence="1300"/>
+               name="Doctor Schedule" sequence="300"/>
 
 </odoo>
