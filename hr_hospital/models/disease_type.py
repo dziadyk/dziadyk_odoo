@@ -1,4 +1,4 @@
-from odoo import api, exceptions, fields, models, _
+from odoo import _, api, exceptions, fields, models
 
 
 class DiseaseType(models.Model):

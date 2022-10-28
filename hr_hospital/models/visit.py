@@ -1,4 +1,4 @@
-from odoo import api, exceptions, fields, models, _
+from odoo import _, api, exceptions, fields, models
 
 
 class Visit(models.Model):
@@ -34,7 +34,8 @@ class Visit(models.Model):
                 raise exceptions.ValidationError(
                     _('There is already a visit on this time'))
 
-    @api.constrains('planned_date', 'reception_time', 'doctor_id', 'patient_id')
+    @api.constrains('planned_date', 'reception_time',
+                    'doctor_id', 'patient_id')
     def constrains_take_place(self):
         for obj in self:
             if obj.take_place:

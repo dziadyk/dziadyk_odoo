@@ -1,5 +1,5 @@
 import datetime
-from odoo import api, exceptions, fields, models, _
+from odoo import _, api, exceptions, fields, models
 
 
 class Patient(models.Model):

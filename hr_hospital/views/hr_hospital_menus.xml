@@ -4,10 +4,14 @@
     <menuitem id="hr_hosp_main_menu"
               name="Hospital"
               web_icon="hr_hospital,static/description/icon.png"
-              sequence="300"/>
+              sequence="100"/>
 
     <menuitem id="hr_hosp_catalog_menu"
               parent="hr_hosp_main_menu"
-              name="Catalog" sequence="900"/>
+              name="Catalog" sequence="1000"/>
+
+    <menuitem id="hr_hosp_wizard_menu"
+              parent="hr_hosp_main_menu"
+              name="Wizard" sequence="1100"/>
 
 </odoo>

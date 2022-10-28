@@ -1,4 +1,4 @@
-from odoo import api, exceptions, fields, models, _
+from odoo import _, api, exceptions, fields, models
 
 
 class DoctorSchedule(models.Model):
@@ -14,7 +14,7 @@ class DoctorSchedule(models.Model):
     start_time = fields.Float()
     finish_time = fields.Float()
 
-    @api.constrains('start_time','finish_time')
+    @api.constrains('start_time', 'finish_time')
     def constrains_work_time(self):
         for obj in self:
             if obj.start_time >= obj.finish_time:
@@ -26,12 +26,12 @@ class DoctorSchedule(models.Model):
                  ('date', '=', obj.date),
                  ('doctor_id', '=', obj.doctor_id.id),
                  '|',
-                    '&',
-                        ('start_time', '>', obj.start_time),
-                        ('start_time', '<', obj.finish_time),
-                    '&',
-                        ('finish_time', '>', obj.start_time),
-                        ('finish_time', '<', obj.finish_time)])
+                 '&',
+                 ('start_time', '>', obj.start_time),
+                 ('start_time', '<', obj.finish_time),
+                 '&',
+                 ('finish_time', '>', obj.start_time),
+                 ('finish_time', '<', obj.finish_time)])
             if exist_schedule:
                 raise exceptions.ValidationError(
                     _('Doctor already has a schedule on this time'))
