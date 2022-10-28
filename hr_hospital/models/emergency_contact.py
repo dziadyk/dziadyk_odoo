@@ -6,5 +6,6 @@ class EmergencyContact(models.Model):
     _description = 'Emergency Contact'
     _inherit = 'hr.hosp.person'
 
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(
+        default=True, )
     description = fields.Text()

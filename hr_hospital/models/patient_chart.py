@@ -6,8 +6,10 @@ class PatientChart(models.Model):
     _description = 'Patient chart'
 
     name = fields.Char()
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(
+        default=True, )
     start_date = fields.Date()
     finish_date = fields.Date()
-    diagnosis_ids = fields.Many2many(comodel_name='hr.hosp.diagnosis')
+    diagnosis_ids = fields.Many2many(
+        comodel_name='hr.hosp.diagnosis', )
     description = fields.Char()

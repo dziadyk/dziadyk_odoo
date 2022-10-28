@@ -25,6 +25,10 @@
         'views/emergency_contact_views.xml',
         'views/visit_views.xml',
         'views/personal_doctor_history_views.xml',
+        'views/medical_test_views.xml',
+        'views/medical_test_type_views.xml',
+        'views/sample_type_views.xml',
+        'views/doctor_schedule_views.xml',
     ],
 
     'images': [

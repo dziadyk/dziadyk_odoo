@@ -8,5 +8,9 @@ from . import (
     disease_type,
     emergency_contact,
     visit,
-    personal_doctor_history
+    personal_doctor_history,
+    medical_test,
+    medical_test_type,
+    sample_type,
+    doctor_schedule
 )

@@ -6,10 +6,12 @@
         <field name="model">hr.hosp.visit</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="doctor_id"/>
                 <field name="patient_id"/>
-                <field name="diagnosis_ids" widget="many2many_tags"/>
+                <field name="planed_date"/>
                 <field name="reception_time"/>
+                <field name="take_place"/>
+                <field name="doctor_id"/>
+                <field name="diagnosis_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -21,10 +23,13 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="doctor_id"/>
-                        <field name="patient_id"/>
-                        <field name="diagnosis_ids" widget="many2many_tags"/>
+                        <field name="planed_date"/>
                         <field name="reception_time"/>
+                        <field name="take_place"/>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                        <field name="diagnosis_ids" widget="many2many_tags"/>
+                        <field name="medical_test_ids"/>
                         <field name="recommendation"/>
                     </group>
                 </sheet>

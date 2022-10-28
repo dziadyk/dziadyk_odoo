@@ -7,12 +7,17 @@ class Patient(models.Model):
     _description = 'Patient'
     _inherit = 'hr.hosp.person'
 
-    active = fields.Boolean(default=True)
-    birthday = fields.Date(string='Date of Birth', required=True)
-    age = fields.Integer(compute='_compute_age')
+    active = fields.Boolean(
+        default=True, )
+    birthday = fields.Date(
+        string='Date of Birth', required=True, )
+    age = fields.Integer(
+        compute='_compute_age', )
     passport = fields.Char()
-    doctor_id = fields.Many2one(comodel_name='hr.hosp.doctor', string='Personal Doctor')
-    emergency_contact_ids = fields.Many2many(comodel_name='hr.hosp.emergency.contact')
+    doctor_id = fields.Many2one(
+        comodel_name='hr.hosp.doctor', string='Personal Doctor', )
+    emergency_contact_ids = fields.Many2many(
+        comodel_name='hr.hosp.emergency.contact', )
 
     @api.model
     def create(self, vals):
@@ -23,7 +28,8 @@ class Patient(models.Model):
                 'doctor_id': vals['doctor_id'],
                 'datetime': datetime.datetime.now()
             }
-            self.env['hr.hosp.personal.doctor.history'].create(doctor_history_dict)
+            self.env['hr.hosp.personal.doctor.history']\
+                .create(doctor_history_dict)
         return patient
 
     def write(self, vals):
@@ -34,7 +40,8 @@ class Patient(models.Model):
                 'doctor_id': vals['doctor_id'],
                 'datetime': datetime.datetime.now()
             }
-            self.env['hr.hosp.personal.doctor.history'].create(doctor_history_dict)
+            self.env['hr.hosp.personal.doctor.history']\
+                .create(doctor_history_dict)
         return patient
 
     @api.depends('birthday')
@@ -42,8 +49,9 @@ class Patient(models.Model):
         today = datetime.date.today()
         for obj in self:
             if obj.birthday:
-                obj.age = obj.age = today.year - obj.birthday.year - (
-                        (today.month, today.day) < (obj.birthday.month, obj.birthday.day))
+                extra_year = ((today.month, today.day)
+                              < (obj.birthday.month, obj.birthday.day))
+                obj.age = today.year - obj.birthday.year - extra_year
             else:
                 obj.age = 0
 
@@ -52,4 +60,5 @@ class Patient(models.Model):
         today = datetime.date.today()
         for obj in self:
             if obj.birthday > today:
-                raise exceptions.ValidationError(_('Birthday must be less than today'))
+                raise exceptions.ValidationError(
+                    _('Birthday must be less than today'))

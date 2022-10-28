@@ -23,11 +23,17 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="date"/>
                         <field name="patient_id"/>
                         <field name="doctor_id"/>
                         <field name="disease_id"/>
-                        <field name="date"/>
+                        <field name="medical_test_ids" widget="many2many_tags"/>
                         <field name="treatment"/>
+                    </group>
+                    <group string="Mentor" attrs="{'invisible': [('is_intern', '=', False)]}">
+                        <field name="is_intern" invisible="1"/>
+                        <field name="mentor_id" attrs="{'invisible': [('is_intern', '=', False)]}"/>
+                        <field name="mentor_comment" attrs="{'invisible': [('is_intern', '=', False)]}"/>
                     </group>
                 </sheet>
             </form>

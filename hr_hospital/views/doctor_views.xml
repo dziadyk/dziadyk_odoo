@@ -8,6 +8,7 @@
             <tree>
                 <field name="name"/>
                 <field name="specialty"/>
+                <field name="is_intern"/>
             </tree>
         </field>
     </record>
@@ -25,10 +26,16 @@
                         </h2>
                     </div>
                     <group>
-                        <field name="specialty"/>
-                        <field name="phone"/>
-                        <field name="email"/>
-                        <field name="gender"/>
+                        <group>
+                            <field name="specialty"/>
+                            <field name="is_intern"/>
+                            <field name="mentor_id" attrs="{'invisible': [('is_intern', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="gender"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
