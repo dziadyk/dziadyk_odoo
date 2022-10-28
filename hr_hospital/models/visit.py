@@ -27,3 +27,17 @@ class Visit(models.Model):
             if obj.take_place:
                 raise exceptions.ValidationError(
                     _('The visit has already taken place'))
+
+    @api.constrains('active')
+    def constrains_active(self):
+        for obj in self:
+            if obj.diagnosis_ids:
+                raise exceptions.UserError(
+                    _('The visit already has a diagnosis'))
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink_only_empty_diagnosis(self):
+        for obj in self:
+            if obj.diagnosis_ids:
+                raise exceptions.UserError(
+                    _('The visit already has a diagnosis'))

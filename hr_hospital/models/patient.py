@@ -19,19 +19,6 @@ class Patient(models.Model):
     emergency_contact_ids = fields.Many2many(
         comodel_name='hr.hosp.emergency.contact', )
 
-    @api.model
-    def create(self, vals):
-        patient = super(Patient, self).create(vals)
-        if vals['doctor_id']:
-            doctor_history_dict = {
-                'patient_id': patient.id,
-                'doctor_id': vals['doctor_id'],
-                'datetime': datetime.datetime.now()
-            }
-            self.env['hr.hosp.personal.doctor.history']\
-                .create(doctor_history_dict)
-        return patient
-
     def write(self, vals):
         patient = super(Patient, self).write(vals)
         if vals.get('doctor_id'):
@@ -44,6 +31,14 @@ class Patient(models.Model):
                 .create(doctor_history_dict)
         return patient
 
+    @api.constrains('birthday')
+    def constrains_birthday(self):
+        today = datetime.date.today()
+        for obj in self:
+            if obj.birthday > today:
+                raise exceptions.ValidationError(
+                    _('Birthday must be less than today'))
+
     @api.depends('birthday')
     def _compute_age(self):
         today = datetime.date.today()
@@ -55,10 +50,15 @@ class Patient(models.Model):
             else:
                 obj.age = 0
 
-    @api.constrains('birthday')
-    def constrains_birthday(self):
-        today = datetime.date.today()
-        for obj in self:
-            if obj.birthday > today:
-                raise exceptions.ValidationError(
-                    _('Birthday must be less than today'))
+    @api.model
+    def create(self, vals):
+        patient = super(Patient, self).create(vals)
+        if vals['doctor_id']:
+            doctor_history_dict = {
+                'patient_id': patient.id,
+                'doctor_id': vals['doctor_id'],
+                'datetime': datetime.datetime.now()
+            }
+            self.env['hr.hosp.personal.doctor.history']\
+                .create(doctor_history_dict)
+        return patient

@@ -21,6 +21,12 @@ class MedicalTestType(models.Model):
         string='Disease Type', ondelete='cascade')
     parent_path = fields.Char()
 
+    @api.constrains('parent_id')
+    def _check_type_recursion(self):
+        if not self._check_recursion():
+            raise exceptions.ValidationError(
+                _('You cannot create recursive types'))
+
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
         for obj in self:
@@ -29,9 +35,3 @@ class MedicalTestType(models.Model):
                                     % (obj.parent_id.complete_name, obj.name)
             else:
                 obj.complete_name = obj.name
-
-    @api.constrains('parent_id')
-    def _check_type_recursion(self):
-        if not self._check_recursion():
-            raise exceptions.ValidationError(
-                _('You cannot create recursive types'))

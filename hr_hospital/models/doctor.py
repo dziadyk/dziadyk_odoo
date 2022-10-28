@@ -15,15 +15,15 @@ class Doctor(models.Model):
         comodel_name='hr.hosp.doctor',
         domain=[('is_intern', '=', False)], )
 
-    @api.onchange('is_intern')
-    def onchange_is_intern(self):
-        for obj in self:
-            if obj.mentor_id:
-                obj.mentor_id = 0
-
     @api.constrains('is_intern', 'mentor_id')
     def constrains_intern_mentor(self):
         for obj in self:
             if obj.is_intern and not obj.mentor_id:
                 raise exceptions.ValidationError(
                     _('Intern must must have a mentor'))
+
+    @api.onchange('is_intern')
+    def onchange_is_intern(self):
+        for obj in self:
+            if obj.mentor_id:
+                obj.mentor_id = 0
