@@ -47,7 +47,7 @@
 
    <record id="menu_hr_hosp_disease_report_wizard" model="ir.ui.menu">
         <field name="name">Disease per month</field>
-        <field name="parent_id" ref="hr_hospital.hr_hosp_report_menu"/>
+        <field name="parent_id" ref="hr_hosp_report_menu"/>
         <field name="action" ref="server_action_hr_hosp_disease_report_wizard"/>
         <field name="sequence" eval="100">
         </field>

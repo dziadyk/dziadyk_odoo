@@ -22,10 +22,10 @@ class Visit(models.Model):
         comodel_name='hr.hosp.medical.test', )
     recommendation = fields.Text()
 
-    @api.constrains('planned_date', 'patient_id')
+    @api.constrains('planned_date', 'planned_time', 'patient_id')
     def constrains_planned_visit(self):
         for obj in self:
-            exist_visits = self.env['hr.hosp.visit'].search_cout(
+            exist_visits = self.env['hr.hosp.visit'].search_count(
                 [('id', '!=', obj.id),
                  ('patient_id', '=', obj.patient_id.id),
                  ('planned_date', '=', obj.planned_date),

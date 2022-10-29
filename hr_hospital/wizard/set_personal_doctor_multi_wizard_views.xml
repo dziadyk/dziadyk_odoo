@@ -47,7 +47,7 @@
 
    <record id="menu_hr_hosp_set_personal_doctor_multi_wizard" model="ir.ui.menu">
         <field name="name">Set Personal Doctor</field>
-        <field name="parent_id" ref="hr_hospital.hr_hosp_wizard_menu"/>
+        <field name="parent_id" ref="hr_hosp_wizard_menu"/>
         <field name="action" ref="server_action_hr_hosp_set_personal_doctor_multi_wizard"/>
         <field name="sequence" eval="100">
         </field>
