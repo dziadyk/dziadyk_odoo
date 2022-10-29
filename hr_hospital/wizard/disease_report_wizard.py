@@ -5,7 +5,6 @@ from odoo import _, fields, models
 class DiseaseReportWizard(models.TransientModel):
     _name = 'hr.hosp.disease.report.wizard'
     _description = 'Report Disease per month'
-    _rec_name = 'year'
 
     year = fields.Integer(
         required=True, )

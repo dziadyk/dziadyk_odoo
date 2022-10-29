@@ -4,7 +4,6 @@ from odoo import _, api, fields, models
 class MoveVistWizard(models.TransientModel):
     _name = 'hr.hosp.move.visit.wizard'
     _description = 'Move visit'
-    _rec_name = 'patient_id'
 
     visit_id = fields.Many2one(
         comodel_name='hr.hosp.visit',

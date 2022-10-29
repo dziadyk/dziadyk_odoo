@@ -55,3 +55,23 @@ class Visit(models.Model):
             if obj.diagnosis_ids:
                 raise exceptions.UserError(
                     _('Visit already has a diagnosis'))
+
+    def name_get(self):
+        name_list = []
+        for obj in self:
+            visit_name = obj.patient_id.name
+            if obj.planned_date:
+
+                minutes = obj.planned_time * 60
+                hours, minutes = divmod(minutes, 60)
+
+                visit_name += " ({} {}) {}".format(
+                    obj.planned_date,
+                    "%02d:%02d" % (hours, minutes),
+                    obj.doctor_id.name, )
+            else:
+                visit_name += " ({}) {}".format(
+                    obj.reception_time,
+                    obj.doctor_id.name, )
+            name_list.append((obj.id, visit_name))
+        return name_list

@@ -4,7 +4,6 @@ from odoo import _, fields, models
 class SetPersonalDoctorMultiWizard(models.TransientModel):
     _name = 'hr.hosp.set.personal.doctor.multi.wizard'
     _description = 'Wizard to set personal doctor'
-    _rec_name = 'doctor_id'
 
     doctor_id = fields.Many2one(
         comodel_name='hr.hosp.doctor',
