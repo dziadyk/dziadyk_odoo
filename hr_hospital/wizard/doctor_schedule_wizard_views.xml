@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hr_hosp_doctor_schedule_wizard_view_form" model="ir.ui.view">
+        <field name="name">hr.hosp.doctor.schedule.wizard.view.form</field>
+        <field name="model">hr.hosp.doctor.schedule.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="doctor_id" placeholder="Doctor" options="{'no_create': True}"/>
+                    <field name="begin_date"/>
+                    <field name="end_date"/>
+                    <field name="schedule_shift"/>
+                </group>
+                <group string="Shift 1" name="shift1">
+                    <field name="start_time_1" widget="float_time"/>
+                    <field name="finish_time_1" widget="float_time"/>
+                </group>
+                <group string="Shift 2" name="shift2">
+                    <field name="start_time_2" widget="float_time"/>
+                    <field name="finish_time_2" widget="float_time"/>
+                </group>
+                <footer>
+                    <button name="action_create_record"
+                            string="Save"
+                            type="object"
+                            icon="fa-check"
+                            class="btn-primary"
+                    />
+                    <button special="cancel"
+                            class="oe_link"
+                            string="Close"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hr_hosp_doctor_schedule_wizard" model="ir.actions.act_window">
+        <field name="name">Create Doctor Schedule</field>
+        <field name="res_model">hr.hosp.doctor.schedule.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_hr_hosp_visit"/>
+        <field name="binding_view_types">form</field>
+        <field name="binding_type">action</field>
+    </record>
+
+    <record id="server_action_hr_hosp_doctor_schedule_wizard" model="ir.actions.server">
+        <field name="name">Create Doctor Schedule</field>
+        <field name="model_id" ref="model_hr_hosp_doctor_schedule_wizard"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_open_wizard()
+        </field>
+    </record>
+
+   <record id="menu_hr_hosp_doctor_schedule_wizard" model="ir.ui.menu">
+        <field name="name">Create Doctor Schedule</field>
+        <field name="parent_id" ref="hr_hosp_wizard_menu"/>
+        <field name="action" ref="server_action_hr_hosp_doctor_schedule_wizard"/>
+        <field name="sequence" eval="300">
+        </field>
+    </record>
+
+</odoo>
