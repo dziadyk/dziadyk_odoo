@@ -39,19 +39,11 @@ class DiseaseReportWizard(models.TransientModel):
                         'default_month': str(datetime.date.today().month)},
         }
 
-    def action_get_report(self):
-        self.ensure_one()
-        # print('Year', self.year)
-        # print('Month', self.month)
-        # print('Year', date.today().year == 2022)
-        # print('Month', date.today().month == 10)
-
-    @api.depends('year','month','disease_id')
+    @api.depends('year', 'month', 'disease_id')
     def _compute_count(self):
         for obj in self:
             beg_date = datetime.datetime(obj.year, int(obj.month), 1)
             end_date = datetime.datetime(obj.year, int(obj.month)+1, 1)
-            print(beg_date, end_date)
             obj.count = self.env['hr.hosp.diagnosis'].search_count(
                 [('disease_id', '=', obj.disease_id.id),
                  ('date', '>=', beg_date),
