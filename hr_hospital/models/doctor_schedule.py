@@ -25,13 +25,20 @@ class DoctorSchedule(models.Model):
                 [('id', '!=', obj.id),
                  ('date', '=', obj.date),
                  ('doctor_id', '=', obj.doctor_id.id),
-                 '|',
+                 '|', '|', '|',
                  '&',
                  ('start_time', '>', obj.start_time),
                  ('start_time', '<', obj.finish_time),
                  '&',
                  ('finish_time', '>', obj.start_time),
-                 ('finish_time', '<', obj.finish_time)])
+                 ('finish_time', '<', obj.finish_time),
+                 '&',
+                 ('start_time', '>=', obj.start_time),
+                 ('finish_time', '<=', obj.finish_time),
+                 '&',
+                 ('start_time', '<=', obj.start_time),
+                 ('finish_time', '>=', obj.finish_time)])
             if exist_schedule:
-                raise exceptions.ValidationError(
-                    _('Doctor already has a schedule on this time'))
+                error = 'Doctor already has a schedule at {}'.format(
+                    obj.date)
+                raise exceptions.ValidationError(_(error))
