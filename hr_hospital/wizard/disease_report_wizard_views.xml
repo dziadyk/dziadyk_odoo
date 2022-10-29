@@ -9,14 +9,12 @@
                 <group>
                     <field name="year"/>
                     <field name="month" placeholder="Month"/>
+                    <field name="disease_id"/>
+                </group>
+                <group string="Result" name="result">
+                    <field name="count"/>
                 </group>
                 <footer>
-                    <button name="action_get_report"
-                            string="Get Report"
-                            type="object"
-                            icon="fa-search"
-                            class="btn-primary"
-                    />
                     <button special="cancel"
                             class="oe_link"
                             string="Close"

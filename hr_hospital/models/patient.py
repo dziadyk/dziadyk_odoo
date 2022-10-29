@@ -21,7 +21,7 @@ class Patient(models.Model):
 
     def write(self, vals):
         patient = super(Patient, self).write(vals)
-        if vals.get('doctor_id'):
+        if 'doctor_id' in vals:
             doctor_history_dict = {
                 'patient_id': self.id,
                 'doctor_id': vals['doctor_id'],
