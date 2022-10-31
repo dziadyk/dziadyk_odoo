@@ -21,14 +21,14 @@ class Patient(models.Model):
 
     def write(self, vals):
         patient = super(Patient, self).write(vals)
-        if 'doctor_id' in vals:
-            doctor_history_dict = {
-                'patient_id': self.id,
-                'doctor_id': vals['doctor_id'],
-                'datetime': datetime.datetime.now()
-            }
-            self.env['hr.hosp.personal.doctor.history']\
-                .create(doctor_history_dict)
+        for obj in self:
+            if 'doctor_id' in vals:
+                doctor_history_dict = {
+                    'patient_id': obj.id,
+                    'doctor_id': vals['doctor_id'],
+                    'datetime': datetime.datetime.now()}
+                self.env['hr.hosp.personal.doctor.history']\
+                    .create(doctor_history_dict)
         return patient
 
     @api.constrains('birthday')
