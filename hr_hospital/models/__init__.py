@@ -12,4 +12,5 @@ from . import (
     medical_test_type,
     medical_test,
     sample_type,
+    specialty,
 )

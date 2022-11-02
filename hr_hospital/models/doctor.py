@@ -8,7 +8,9 @@ class Doctor(models.Model):
 
     active = fields.Boolean(
         default=True, )
-    specialty = fields.Char()
+    specialty_id = fields.Many2one(
+        comodel_name='hr.hosp.specialty',
+        required=True, )
     is_intern = fields.Boolean(
         string='Intern', )
     mentor_id = fields.Many2one(

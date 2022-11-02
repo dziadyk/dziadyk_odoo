@@ -28,6 +28,7 @@
         'views/medical_test_type_views.xml',
         'views/medical_test_views.xml',
         'views/sample_type_views.xml',
+        'views/specialty_views.xml',
         'wizard/set_personal_doctor_multi_wizard_views.xml',
         'wizard/disease_report_wizard_views.xml',
         'wizard/move_visit_wizard_views.xml',
