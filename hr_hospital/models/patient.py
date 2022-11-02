@@ -18,37 +18,46 @@ class Patient(models.Model):
         comodel_name='hr.hosp.doctor', string='Personal Doctor', )
     emergency_contact_ids = fields.Many2many(
         comodel_name='hr.hosp.emergency.contact', )
+    personal_doctor_ids = fields.One2many(
+        comodel_name='hr.hosp.personal.doctor.history',
+        inverse_name='patient_id', readonly=True, )
+    diagnosis_ids = fields.One2many(
+        comodel_name='hr.hosp.diagnosis',
+        inverse_name='patient_id', readonly=True, )
+    visit_count = fields.Integer(compute='_compute_depend_count')
+    diagnosis_count = fields.Integer(compute='_compute_depend_count')
+    test_count = fields.Integer(compute='_compute_depend_count')
 
     def write(self, vals):
         patient = super(Patient, self).write(vals)
-        for obj in self:
+        for rec in self:
             if 'doctor_id' in vals:
                 doctor_history_dict = {
-                    'patient_id': obj.id,
+                    'patient_id': rec.id,
                     'doctor_id': vals['doctor_id'],
                     'datetime': datetime.datetime.now()}
-                self.env['hr.hosp.personal.doctor.history']\
+                self.env['hr.hosp.personal.doctor.history'] \
                     .create(doctor_history_dict)
         return patient
 
     @api.constrains('birthday')
     def constrains_birthday(self):
         today = datetime.date.today()
-        for obj in self:
-            if obj.birthday > today:
+        for rec in self:
+            if rec.birthday > today:
                 raise exceptions.ValidationError(
                     _('Birthday must be less than today'))
 
     @api.depends('birthday')
     def _compute_age(self):
         today = datetime.date.today()
-        for obj in self:
-            if obj.birthday:
+        for rec in self:
+            if rec.birthday:
                 extra_year = ((today.month, today.day)
-                              < (obj.birthday.month, obj.birthday.day))
-                obj.age = today.year - obj.birthday.year - extra_year
+                              < (rec.birthday.month, rec.birthday.day))
+                rec.age = today.year - rec.birthday.year - extra_year
             else:
-                obj.age = 0
+                rec.age = 0
 
     @api.model
     def create(self, vals):
@@ -59,6 +68,60 @@ class Patient(models.Model):
                 'doctor_id': vals['doctor_id'],
                 'datetime': datetime.datetime.now()
             }
-            self.env['hr.hosp.personal.doctor.history']\
+            self.env['hr.hosp.personal.doctor.history'] \
                 .create(doctor_history_dict)
         return patient
+
+    def _compute_depend_count(self):
+        for rec in self:
+            rec.visit_count = self.env['hr.hosp.visit']. \
+                search_count([('patient_id', '=', rec.id)])
+            rec.diagnosis_count = self.env['hr.hosp.diagnosis']. \
+                search_count([('patient_id', '=', rec.id)])
+            rec.test_count = self.env['hr.hosp.medical.test']. \
+                search_count([('patient_id', '=', rec.id)])
+
+    def open_patient_visit_action(self):
+        self.ensure_one()
+        return {
+            'name': _('Patient Visits'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'list,form',
+            'view_mode': 'list,form',
+            'res_model': 'hr.hosp.visit',
+            'target': 'current',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {
+                'default_patient_id': self.id,
+                'default_doctor_id': self.doctor_id.id, },
+        }
+
+    def open_patient_diagnosis_action(self):
+        self.ensure_one()
+        return {
+            'name': _('Patient Visits'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'list,form',
+            'view_mode': 'list,form',
+            'res_model': 'hr.hosp.diagnosis',
+            'target': 'current',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {
+                'default_patient_id': self.id,
+                'default_doctor_id': self.doctor_id.id, },
+        }
+
+    def open_patient_medical_test_action(self):
+        self.ensure_one()
+        return {
+            'name': _('Patient Visits'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'list,form',
+            'view_mode': 'list,form',
+            'res_model': 'hr.hosp.medical.test',
+            'target': 'current',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {
+                'default_patient_id': self.id,
+                'default_doctor_id': self.doctor_id.id, },
+        }

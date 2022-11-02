@@ -19,6 +19,8 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <widget name="web_ribbon" title="Intern" bg_color="bg-warning"
+                            attrs="{'invisible':[('is_intern','=',False)]}"/>
                     <field name="photo" widget="image" class="oe_left oe_avatar"/>
                     <div class="oe_title">
                         <h3>
@@ -37,6 +39,36 @@
                             <field name="gender"/>
                         </group>
                     </group>
+                    <notebook attrs="{'invisible':[('is_intern','=',True)]}">
+                        <page string="Interns" name="doctor_interns">
+                            <field name="intern_ids"  context="{'default_is_intern': True}">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <widget name="web_ribbon" title="Intern" bg_color="bg-warning"
+                                                attrs="{'invisible':[('is_intern','=',False)]}"/>
+                                        <field name="photo" widget="image" class="oe_left oe_avatar"/>
+                                        <div class="oe_title">
+                                            <h3>
+                                                <field name="name"/>
+                                            </h3>
+                                        </div>
+                                        <group>
+                                            <group>
+                                                <field name="specialty"/>
+                                                <field name="is_intern" invisible="True"/>
+                                                <field name="phone"/>
+                                                <field name="email"/>
+                                                <field name="gender"/>
+                                            </group>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

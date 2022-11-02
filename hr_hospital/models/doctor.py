@@ -13,17 +13,22 @@ class Doctor(models.Model):
         string='Intern', )
     mentor_id = fields.Many2one(
         comodel_name='hr.hosp.doctor',
-        domain=[('is_intern', '=', False)], )
+        domain=[('is_intern', '=', False)],
+        ondelete='cascade', )
+    intern_ids = fields.One2many(
+        comodel_name='hr.hosp.doctor',
+        inverse_name='mentor_id', )
 
     @api.constrains('is_intern', 'mentor_id')
     def constrains_intern_mentor(self):
-        for obj in self:
-            if obj.is_intern and not obj.mentor_id:
+        for rec in self:
+            if rec.is_intern and (not rec.mentor_id
+                                  or rec.mentor_id.id == rec.id):
                 raise exceptions.ValidationError(
                     _('Intern must must have a mentor'))
 
     @api.onchange('is_intern')
     def onchange_is_intern(self):
-        for obj in self:
-            if obj.mentor_id:
-                obj.mentor_id = 0
+        for rec in self:
+            if not rec.is_intern and rec.mentor_id:
+                rec.mentor_id = 0

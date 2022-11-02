@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import _, fields, models
 
 
 class Person(models.AbstractModel):
@@ -8,7 +8,9 @@ class Person(models.AbstractModel):
     name = fields.Char(
         required=True, )
     gender = fields.Selection(
-        selection=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
+        selection=[('male', _('Male')),
+                   ('female', _('Female')),
+                   ('other', _('Other'))],
         required=True, default='other', )
     phone = fields.Char()
     email = fields.Char()
