@@ -6,7 +6,7 @@ class DiseaseReportWizard(models.TransientModel):
     _name = 'hr.hosp.disease.report.wizard'
     _description = 'Report Disease per month'
 
-    year = fields.Integer(
+    year = fields.Char(
         required=True, )
     month = fields.Selection(
         selection=[('1', 'January'),
@@ -35,15 +35,18 @@ class DiseaseReportWizard(models.TransientModel):
             'view_mode': 'form',
             'res_model': 'hr.hosp.disease.report.wizard',
             'target': 'new',
-            'context': {'default_year': datetime.date.today().year,
+            'context': {'default_year': str(datetime.date.today().year),
                         'default_month': str(datetime.date.today().month)},
         }
 
     @api.depends('year', 'month', 'disease_id')
     def _compute_count(self):
         for rec in self:
-            beg_date = datetime.datetime(rec.year, int(rec.month), 1)
-            end_date = datetime.datetime(rec.year, int(rec.month)+1, 1)
+            beg_date = datetime.datetime(int(rec.year), int(rec.month), 1)
+            if rec.month == '12':
+                end_date = datetime.datetime(int(rec.year)+1, 1, 1)
+            else:
+                end_date = datetime.datetime(int(rec.year), int(rec.month)+1, 1)
             rec.count = self.env['hr.hosp.diagnosis'].search_count(
                 [('disease_id', '=', rec.disease_id.id),
                  ('date', '>=', beg_date),

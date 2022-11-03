@@ -78,10 +78,10 @@
                         <page string="Diagnosis History" name="diagnosis_history">
                             <field name="diagnosis_ids">
                                 <tree default_order="date desc">
-                                    <field name="date"/>
-                                    <field name="doctor_id"/>
                                     <field name="disease_id"/>
+                                    <field name="doctor_id"/>
                                     <field name="medical_test_ids" widget="many2many_tags"/>
+                                    <field name="date"/>
                                 </tree>
                             </field>
                         </page>

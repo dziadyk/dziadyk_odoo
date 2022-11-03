@@ -25,7 +25,8 @@ class Visit(models.Model):
     diagnosis_ids = fields.Many2many(
         comodel_name='hr.hosp.diagnosis', )
     medical_test_ids = fields.Many2many(
-        comodel_name='hr.hosp.medical.test', )
+        comodel_name='hr.hosp.medical.test',
+        compute="_compute_medical_test",  store=True, )
     recommendation = fields.Text()
 
     @api.constrains('planned_date', 'planned_time', 'patient_id')
@@ -75,6 +76,15 @@ class Visit(models.Model):
             rec.visit_stop = tz.localize(n_date).astimezone(pytz.utc) \
                 .replace(tzinfo=None)
 
+    @api.depends('diagnosis_ids')
+    def _compute_visit_duration(self):
+        for rec in self:
+            test_list = []
+            for diagnosis in rec.diagnosis_ids:
+                for test in diagnosis.medical_test_ids:
+                    test_list.append(test.id)
+            rec.medical_test_ids = test_list
+
     @api.ondelete(at_uninstall=False)
     def _unlink_only_empty_diagnosis(self):
         for rec in self:
@@ -90,6 +100,14 @@ class Visit(models.Model):
                 _('Planed date must be greater than today'))
         visit = super(Visit, self).create(vals)
         return visit
+
+    @api.onchange('doctor_id', 'patient_id')
+    def _set_diagnosis_domain(self):
+        res = {'domain': {'diagnosis_ids': [
+            ('doctor_id', '=', self.doctor_id.id),
+            ('patient_id', '=', self.patient_id.id)
+        ]}}
+        return res
 
     def name_get(self):
         name_list = []

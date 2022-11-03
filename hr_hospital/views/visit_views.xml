@@ -23,8 +23,6 @@
                 <field name="patient_id"/>
                 <field name="planned_date"/>
                 <field name="planned_time" widget="float_time"/>
-                <field name="visit_start"/>
-                <field name="visit_stop"/>
                 <field name="reception_time"/>
                 <field name="take_place"/>
                 <field name="doctor_id"/>
@@ -50,7 +48,7 @@
                         <field name="take_place"/>
                         <field name="patient_id"/>
                         <field name="doctor_id"/>
-                        <field name="diagnosis_ids" widget="many2many_tags"/>
+                        <field name="diagnosis_ids"/>
                         <field name="medical_test_ids"/>
                         <field name="recommendation"/>
                     </group>
@@ -63,7 +61,7 @@
         <field name="name">Visit</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hosp.visit</field>
-        <field name="view_mode">calendar,tree,form</field>
+        <field name="view_mode">tree,calendar,form</field>
     </record>
 
      <menuitem id="hr_hosp_visit_menu"
