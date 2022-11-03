@@ -125,3 +125,36 @@ class Patient(models.Model):
                 'default_patient_id': self.id,
                 'default_doctor_id': self.doctor_id.id, },
         }
+
+    def schedule_visit_action(self):
+        self.ensure_one()
+        return {
+            'name': _('Create Planed Visit'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'hr.hosp.create.planed.visit.wizard',
+            'target': 'new',
+            'domain': [],
+            'context': {
+                'default_patient_id': self.id,
+                'default_doctor_id': self.doctor_id.id, },
+        }
+
+    def set_personal_doctor_action(self):
+
+        id_list = []
+        for rec in self:
+            id_list.append(rec.id)
+
+        return {
+            'name': _('Set Personal Doctor'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'hr.hosp.set.personal.doctor.multi.wizard',
+            'target': 'new',
+            'domain': [],
+            'context': {
+                'default_patient_ids': id_list, },
+        }

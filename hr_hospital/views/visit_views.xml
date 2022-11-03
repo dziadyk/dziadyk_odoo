@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="hr_hosp_visit_calendar" model="ir.ui.view">
+        <field name="name">hr.hosp.visit.calendar ()</field>
+        <field name="model">hr.hosp.visit</field>
+        <field name="arch" type="xml">
+            <calendar date_start="visit_start" date_stop="visit_stop"
+                      string="Visits" mode="week" color="doctor_id"
+                      event_open_popup="0" delete="0">
+                <field name="doctor_id" filters="1"/>
+                <field name="patient_id"/>
+                <field name="take_place"/>
+            </calendar>
+        </field>
+    </record>
+
     <record id="hr_hosp_visit_tree" model="ir.ui.view">
         <field name="name">hr.hosp.visit.tree ()</field>
         <field name="model">hr.hosp.visit</field>
@@ -9,6 +23,8 @@
                 <field name="patient_id"/>
                 <field name="planned_date"/>
                 <field name="planned_time" widget="float_time"/>
+                <field name="visit_start"/>
+                <field name="visit_stop"/>
                 <field name="reception_time"/>
                 <field name="take_place"/>
                 <field name="doctor_id"/>
@@ -22,6 +38,10 @@
         <field name="model">hr.hosp.visit</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="move_visit_action" string="Move Visit" type="object"
+                            class="oe_highlight" state="draft" icon="fa-calendar"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="planned_date"/>
@@ -43,7 +63,7 @@
         <field name="name">Visit</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hosp.visit</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">calendar,tree,form</field>
     </record>
 
      <menuitem id="hr_hosp_visit_menu"

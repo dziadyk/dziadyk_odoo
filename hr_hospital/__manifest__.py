@@ -32,6 +32,7 @@
         'wizard/set_personal_doctor_multi_wizard_views.xml',
         'wizard/disease_report_wizard_views.xml',
         'wizard/move_visit_wizard_views.xml',
+        'wizard/create_planed_visit_wizard_views.xml',
         'wizard/doctor_schedule_wizard_views.xml',
     ],
 

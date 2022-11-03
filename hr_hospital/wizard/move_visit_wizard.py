@@ -50,8 +50,8 @@ class MoveVistWizard(models.TransientModel):
 
     @api.depends('visit_id')
     def _compute_visit_data(self):
-        for obj in self:
-            obj.patient_id = obj.visit_id.patient_id
-            obj.old_doctor_id = obj.visit_id.doctor_id
-            obj.old_planned_date = obj.visit_id.planned_date
-            obj.old_planned_time = obj.visit_id.planned_time
+        for rec in self:
+            rec.patient_id = rec.visit_id.patient_id
+            rec.old_doctor_id = rec.visit_id.doctor_id
+            rec.old_planned_date = rec.visit_id.planned_date
+            rec.old_planned_time = rec.visit_id.planned_time

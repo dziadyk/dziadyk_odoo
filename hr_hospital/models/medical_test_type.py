@@ -29,9 +29,9 @@ class MedicalTestType(models.Model):
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
-        for obj in self:
-            if obj.parent_id:
-                obj.complete_name = '%s / %s' \
-                                    % (obj.parent_id.complete_name, obj.name)
+        for rec in self:
+            if rec.parent_id:
+                rec.complete_name = '%s / %s' \
+                                    % (rec.parent_id.complete_name, rec.name)
             else:
-                obj.complete_name = obj.name
+                rec.complete_name = rec.name

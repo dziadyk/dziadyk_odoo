@@ -66,34 +66,34 @@ class DoctorScheduleWizard(models.TransientModel):
                     'start_time_1', 'finish_time_1',
                     'start_time_2', 'finish_time_2', )
     def constrains_period(self):
-        for obj in self:
+        for rec in self:
 
-            beg_date = obj.begin_date.isocalendar()
+            beg_date = rec.begin_date.isocalendar()
             beg_day = beg_date[2]
             beg_week = beg_date[1]
             beg_year = beg_date[0]
-            end_date = obj.end_date.isocalendar()
+            end_date = rec.end_date.isocalendar()
             end_day = end_date[2]
             end_week = end_date[1]
             end_year = end_date[0]
 
-            if obj.begin_date > obj.end_date:
+            if rec.begin_date > rec.end_date:
                 raise exceptions.ValidationError(
                     _('Begin date must be less end date'))
-            if obj.start_time_1 == 0 or obj.finish_time_1 == 0:
+            if rec.start_time_1 == 0 or rec.finish_time_1 == 0:
                 raise exceptions.ValidationError(
                     _('Required Shift 1'))
-            if obj.start_time_1 >= obj.finish_time_1:
+            if rec.start_time_1 >= rec.finish_time_1:
                 raise exceptions.ValidationError(
                     _('Start time must be less than finish'))
-            if ((obj.schedule_shift == 'day' and
+            if ((rec.schedule_shift == 'day' and
                  (beg_day != end_day or
                   (beg_week, beg_year) != (end_week, end_year))) or
-                    (obj.schedule_shift == 'week' and
+                    (rec.schedule_shift == 'week' and
                      (beg_week, beg_year) != (end_week, end_year))):
-                if obj.start_time_2 == 0 or obj.finish_time_2 == 0:
+                if rec.start_time_2 == 0 or rec.finish_time_2 == 0:
                     raise exceptions.ValidationError(
                         _('Required Shift 2'))
-                if obj.start_time_2 >= obj.finish_time_2:
+                if rec.start_time_2 >= rec.finish_time_2:
                     raise exceptions.ValidationError(
                         _('Start time must be less than finish'))

@@ -16,29 +16,29 @@ class DoctorSchedule(models.Model):
 
     @api.constrains('start_time', 'finish_time')
     def constrains_work_time(self):
-        for obj in self:
-            if obj.start_time >= obj.finish_time:
+        for rec in self:
+            if rec.start_time >= rec.finish_time:
                 raise exceptions.ValidationError(
                     _('Start time must be less than finish'))
 
             exist_schedule = self.env['hr.hosp.doctor.schedule'].search_count(
-                [('id', '!=', obj.id),
-                 ('date', '=', obj.date),
-                 ('doctor_id', '=', obj.doctor_id.id),
+                [('id', '!=', rec.id),
+                 ('date', '=', rec.date),
+                 ('doctor_id', '=', rec.doctor_id.id),
                  '|', '|', '|',
                  '&',
-                 ('start_time', '>', obj.start_time),
-                 ('start_time', '<', obj.finish_time),
+                 ('start_time', '>', rec.start_time),
+                 ('start_time', '<', rec.finish_time),
                  '&',
-                 ('finish_time', '>', obj.start_time),
-                 ('finish_time', '<', obj.finish_time),
+                 ('finish_time', '>', rec.start_time),
+                 ('finish_time', '<', rec.finish_time),
                  '&',
-                 ('start_time', '>=', obj.start_time),
-                 ('finish_time', '<=', obj.finish_time),
+                 ('start_time', '>=', rec.start_time),
+                 ('finish_time', '<=', rec.finish_time),
                  '&',
-                 ('start_time', '<=', obj.start_time),
-                 ('finish_time', '>=', obj.finish_time)])
+                 ('start_time', '<=', rec.start_time),
+                 ('finish_time', '>=', rec.finish_time)])
             if exist_schedule:
                 error = 'Doctor already has a schedule at {}'.format(
-                    obj.date)
+                    rec.date)
                 raise exceptions.ValidationError(_(error))

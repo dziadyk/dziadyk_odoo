@@ -59,7 +59,7 @@
         <field name="name">Create Doctor Schedule</field>
         <field name="parent_id" ref="hr_hosp_wizard_menu"/>
         <field name="action" ref="server_action_hr_hosp_doctor_schedule_wizard"/>
-        <field name="sequence" eval="300">
+        <field name="sequence" eval="400">
         </field>
     </record>
 

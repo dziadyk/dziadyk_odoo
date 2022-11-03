@@ -20,6 +20,9 @@ class Doctor(models.Model):
     intern_ids = fields.One2many(
         comodel_name='hr.hosp.doctor',
         inverse_name='mentor_id', )
+    patient_ids = fields.One2many(
+        comodel_name='hr.hosp.patient',
+        inverse_name='doctor_id', readonly=True, )
 
     @api.constrains('is_intern', 'mentor_id')
     def constrains_intern_mentor(self):
@@ -34,3 +37,17 @@ class Doctor(models.Model):
         for rec in self:
             if not rec.is_intern and rec.mentor_id:
                 rec.mentor_id = 0
+
+    def schedule_visit_action(self):
+        self.ensure_one()
+        return {
+            'name': _('Create Planed Visit'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'hr.hosp.create.planed.visit.wizard',
+            'target': 'new',
+            'domain': [],
+            'context': {
+                'default_doctor_id': self.id, },
+        }

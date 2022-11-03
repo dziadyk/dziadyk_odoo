@@ -41,10 +41,10 @@ class DiseaseReportWizard(models.TransientModel):
 
     @api.depends('year', 'month', 'disease_id')
     def _compute_count(self):
-        for obj in self:
-            beg_date = datetime.datetime(obj.year, int(obj.month), 1)
-            end_date = datetime.datetime(obj.year, int(obj.month)+1, 1)
-            obj.count = self.env['hr.hosp.diagnosis'].search_count(
-                [('disease_id', '=', obj.disease_id.id),
+        for rec in self:
+            beg_date = datetime.datetime(rec.year, int(rec.month), 1)
+            end_date = datetime.datetime(rec.year, int(rec.month)+1, 1)
+            rec.count = self.env['hr.hosp.diagnosis'].search_count(
+                [('disease_id', '=', rec.disease_id.id),
                  ('date', '>=', beg_date),
                  ('date', '<', end_date)])
