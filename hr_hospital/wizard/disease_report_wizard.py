@@ -46,7 +46,9 @@ class DiseaseReportWizard(models.TransientModel):
             if rec.month == '12':
                 end_date = datetime.datetime(int(rec.year)+1, 1, 1)
             else:
-                end_date = datetime.datetime(int(rec.year), int(rec.month)+1, 1)
+                end_date = datetime.datetime(int(rec.year),
+                                             int(rec.month)+1,
+                                             1)
             rec.count = self.env['hr.hosp.diagnosis'].search_count(
                 [('disease_id', '=', rec.disease_id.id),
                  ('date', '>=', beg_date),
