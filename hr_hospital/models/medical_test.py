@@ -15,7 +15,9 @@ class MedicalTest(models.Model):
         comodel_name='hr.hosp.patient', required=True, )
     doctor_id = fields.Many2one(
         comodel_name='hr.hosp.doctor', required=True, )
-    sample_type = fields.Many2one(
+    sample_type_id = fields.Many2one(
         comodel_name='hr.hosp.sample.type', )
     sample = fields.Char()
     report = fields.Text()
+    qty = fields.Integer(
+        default=1, )

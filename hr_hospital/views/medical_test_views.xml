@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="hr_hosp_medical_test_search" model="ir.ui.view">
+        <field name="name">hr.hosp.medical.test.search ()</field>
+        <field name="model">hr.hosp.medical.test</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel view_types="tree">
+                    <field name="sample_type_id" string="Sample Type" icon="fa-flask"/>
+                </searchpanel>
+                <field name="patient_id" string="Patient (name/phone)" filter_domain="['|',('patient_id.name','ilike',self),('patient_id.phone','ilike',self)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="groupby_sample_type_id" string="Sample Type" context="{'group_by':'sample_type_id'}"/>
+                    <filter name="groupby_doctor_id" string="Doctor" context="{'group_by':'doctor_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="hr_hosp_medical_test_tree" model="ir.ui.view">
         <field name="name">hr.hosp.medical.test.tree ()</field>
         <field name="model">hr.hosp.medical.test</field>
@@ -10,7 +27,20 @@
                 <field name="medical_test_type_id"/>
                 <field name="patient_id"/>
                 <field name="doctor_id"/>
+                <field name="sample_type_id"/>
             </tree>
+        </field>
+    </record>
+
+    <record id="hr_hosp_medical_test_pivot" model="ir.ui.view">
+        <field name="name">hr.hosp.medical.test.pivot ()</field>
+        <field name="model">hr.hosp.medical.test</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="doctor_id" type="row"/>
+                <field name="medical_test_type_id" type="col"/>
+                <field name="qty" type="measure"/>
+            </pivot>
         </field>
     </record>
 
@@ -25,7 +55,7 @@
                         <field name="medical_test_type_id"/>
                         <field name="patient_id"/>
                         <field name="doctor_id"/>
-                        <field name="sample_type"/>
+                        <field name="sample_type_id"/>
                         <field name="sample"/>
                         <field name="report"/>
                     </group>
@@ -38,7 +68,7 @@
         <field name="name">Medical Test</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hosp.medical.test</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,pivot,form</field>
     </record>
 
      <menuitem id="hr_hosp_medical_test_menu"

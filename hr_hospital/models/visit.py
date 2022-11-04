@@ -101,14 +101,6 @@ class Visit(models.Model):
         visit = super(Visit, self).create(vals)
         return visit
 
-    @api.onchange('doctor_id', 'patient_id')
-    def _set_diagnosis_domain(self):
-        res = {'domain': {'diagnosis_ids': [
-            ('doctor_id', '=', self.doctor_id.id),
-            ('patient_id', '=', self.patient_id.id)
-        ]}}
-        return res
-
     def name_get(self):
         name_list = []
         for rec in self:

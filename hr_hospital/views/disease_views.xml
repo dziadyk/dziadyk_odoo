@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="hr_hosp_disease_search" model="ir.ui.view">
+        <field name="name">hr.hosp.disease.search ()</field>
+        <field name="model">hr.hosp.disease</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel view_types="tree">
+                    <field name="disease_type_id" string="Type" hierarchize="1" enable_counters="1"/>
+                </searchpanel>
+                <field name="name" filter_domain="['|',('name','ilike',self),('disease_type_id','ilike',self)]"/>
+                <group expand="1" string="Group By">
+                    <filter name="groupby_disease_type_id" string="Type" context="{'group_by':'disease_type_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="hr_hosp_disease_tree" model="ir.ui.view">
         <field name="name">hr.hosp.disease.tree ()</field>
         <field name="model">hr.hosp.disease</field>
@@ -28,10 +44,11 @@
     </record>
 
      <record id="hr_hosp_disease_action" model="ir.actions.act_window">
-        <field name="name">Disease</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">hr.hosp.disease</field>
-        <field name="view_mode">tree,form</field>
+         <field name="name">Disease</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">hr.hosp.disease</field>
+         <field name="context">{'search_default_groupby_disease_type_id': 1}</field>
+         <field name="view_mode">tree,form</field>
     </record>
 
      <menuitem id="hr_hosp_disease_menu"

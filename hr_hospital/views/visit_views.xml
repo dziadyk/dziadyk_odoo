@@ -48,7 +48,7 @@
                         <field name="take_place"/>
                         <field name="patient_id"/>
                         <field name="doctor_id"/>
-                        <field name="diagnosis_ids"/>
+                        <field name="diagnosis_ids" domain="[('doctor_id','=',doctor_id),('patient_id','=',patient_id)]"/>
                         <field name="medical_test_ids"/>
                         <field name="recommendation"/>
                     </group>
