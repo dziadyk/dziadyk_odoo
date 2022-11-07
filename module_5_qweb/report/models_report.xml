@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record id="paperformat_lowmargin" model="report.paperformat">
+            <field name="name">European A4 low margin</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">1</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">1</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+            id="action_report_books"
+            string="Books Report"
+            model="library.book"
+            report_type="qweb-pdf"
+            file="module_5_qweb.report_book"
+            name="module_5_qweb.report_book"
+            paperformat="paperformat_lowmargin"
+            print_report_name="'Book - %s' % (object.name)"
+        />
+
+        <report
+            id="action_report_author"
+            string="Author Report"
+            model="author.of.book"
+            report_type="qweb-pdf"
+            file="module_5_qweb.report_author"
+            name="module_5_qweb.report_author"
+            paperformat="paperformat_lowmargin"
+            print_report_name="'Author - %s' % (object.name)"
+        />
+
+    </data>
+</odoo>

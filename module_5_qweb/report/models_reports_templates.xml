@@ -1,0 +1,118 @@
+<odoo>
+
+    <template id="logo_template">
+        <div>
+            <div class="col-6">
+                <img t_att-src="image_data_uri(user.company_id.logo)" alt="Logo"/>
+            </div>
+        </div>
+    </template>
+
+    <template id="book_content">
+        <div style="text-align:center;">
+            <t t-set="title">
+                <li>Author</li>
+            </t>
+            <strong>
+                <div t-out="title"/>
+            </strong>
+            <span t-esc="doc.author_id.get_full_name()"/>
+            <br/>
+            ------------------------------------------------------------
+            <br/>
+            <t t-set="title">
+                <li>Description</li>
+            </t>
+            <strong>
+                <div t-out="title"/>
+            </strong>
+            <div t-field="doc.book_description"/>
+            <br/>
+        </div>
+        <br/>
+        <div>
+            <table class="table-bordered"
+                   style="border: 1px solid black;"
+                   width="100%">
+                <tr>
+                    <th style="border: 1px solid black;">
+                        <t>All author books</t>
+                    </th>
+                    <t t-foreach="doc.author_id.book_ids" t-as="book">
+                        <th style="border: 1px solid black;">
+                            <div t-field="book.name" t-attf-style="background-color:yellow"/>
+                        </th>
+                    </t>
+                </tr>
+            </table>
+        </div>
+    </template>
+
+    <template id="print_date_time">
+        <div name="m_5_datetime" style="text-align:right;">
+            <strong>
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+            </strong>
+        </div>
+    </template>
+
+    <template id="print_date_time_2" name="Print Date Time" inherit_id="module_5_qweb.print_date_time">
+        <xpath expr="//div[@name='m_5_datetime']" posotion="inside">
+            <strong>
+                <span> - create datetime</span>
+            </strong>
+        </xpath>
+    </template>
+
+    <template id="report_book">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="module_5_qweb.logo_template"/>
+                <t t-call="module_5_qweb.book_content"/>
+                <br/>
+                <t t-call="module_5_qweb.print_date_time"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_author">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="module_5_qweb.report_author_body"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_author_body">
+        <strong>Author full name: </strong>
+        <span t-field="doc.name"/>
+        <span t-field="doc.last_name"/>
+        <br/>
+        <br/>
+        <strong>Biography:</strong>
+        <br/>
+        <span t-field="doc.biography_text"/>
+        <br/>
+        <br/>
+        <strong>Author's books:</strong>
+        <table border="1" rules="all" width="100%">
+            <tr>
+                <th align="left">Name</th>
+                <th align="left">Description</th>
+            </tr>
+            <t t-foreach="doc.book_ids" t-as="book">
+                <tr>
+                    <td align="center">
+                        <span t-field="book.name"/>
+                    </td>
+                    <td align="right">
+                        <span t-field="book.book_description"/>
+                    </td>
+                </tr>
+            </t>
+        </table>
+        <br/>
+        <t t-call="module_5_qweb.print_date_time"/>
+    </template>
+
+</odoo>

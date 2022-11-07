@@ -1,0 +1,127 @@
+<odoo>
+    <!--    Author-->
+    <record id="andrzej_sapkowski_id" model="author.of.book">
+        <field name="name">Andrzej</field>
+        <field name="last_name">Sapkowski</field>
+        <field name="biography_text">
+            He is a Polish fantasy writer. He is best known for his book
+            series The Witcher, which has been translated into 37 languages
+            making him the second most-translated Polish science fiction
+            and fantasy writer after Stanisław Lem. His books sold over
+            15 million copies. He is the recipient of the David Gemmell
+            Award and the World Fantasy Life Achievement Award.
+        </field>
+    </record>
+
+    <record id="tolkien_id" model="author.of.book">
+        <field name="name">John Ronald Reuel</field>
+        <field name="last_name">Tolkien</field>
+        <field name="biography_text">
+            Tolkien 3 January
+            1892 – 2 September 1973) was an English writer, poet,
+            philologist, and academic, best known as the author of the high
+            fantasy works The Hobbit and The Lord of the Rings.
+        </field>
+    </record>
+
+    <!--    Book-->
+
+    <record id="sword_of_destiny_id" model="library.book">
+        <field name="name">Sword of Destiny</field>
+        <field name="book_description">
+            Sword of Destiny (Polish: Miecz przeznaczenia) is the first
+            published (in Polish) of the two collections of short stories
+            (the other being The Last Wish), both preceding the main
+            Witcher Saga. The stories were written by Polish fantasy
+            author Andrzej Sapkowski. The first Polish edition was
+            published in 1992; the English edition was published in the
+            UK by Gollancz in 2015.
+        </field>
+        <field name="author_id" ref="module_5_qweb.andrzej_sapkowski_id"/>
+    </record>
+
+    <record id="the_last_wish_id" model="library.book">
+        <field name="name">The Last Wish</field>
+        <field name="book_description">
+            The Last Wish (Polish: Ostatnie życzenie) is the second
+            published (in Polish) of the two collections of short
+            stories (the other being Sword of Destiny) preceding the
+            main Witcher Saga, written by Polish fantasy writer Andrzej
+            Sapkowski. The first Polish edition was published in 1993
+            and the first English edition was first published on the 7th
+            of June 2007. The book has also been translated into
+            several other languages.
+        </field>
+        <field name="author_id" ref="module_5_qweb.andrzej_sapkowski_id"/>
+    </record>
+
+    <record id="blood_of_elves_id" model="library.book">
+        <field name="name">Blood of Elves</field>
+        <field name="book_description">
+            Blood of Elves (Polish: Krew elfów) is the first novel in the
+            Witcher Saga written by the Polish fantasy writer Andrzej
+            Sapkowski, first published in Poland in 1994. It is a sequel
+            to the Witcher short stories collected in the books The Last
+            Wish (Ostatnie życzenie) and Sword of Destiny (Miecz
+            przeznaczenia) and is followed by Time of Contempt (Czas
+            pogardy). The book won the Janusz A. Zajdel Award in 1994
+            and the David Gemmell Legend Award in 2009. An English
+            translation was published in the United Kingdom in 2008
+            (Gollancz) and in the United States in 2009 (Orbit).
+        </field>
+        <field name="author_id" ref="module_5_qweb.andrzej_sapkowski_id"/>
+    </record>
+
+    <record id="the_silmarillion_id" model="library.book">
+        <field name="name">The Silmarillion</field>
+        <field name="book_description">
+            The Silmarillion is a collection of
+            mythopoeic stories by the English writer J. R. R. Tolkien, edited
+            and published posthumously by his son Christopher Tolkien in 1977
+            with assistance from the fantasy author Guy Gavriel Kay.The
+            Silmarillion tells of Eä, a fictional universe that includes the
+            Blessed Realm of Valinor, the once-great region of Beleriand, the
+            sunken island of Númenor, and the continent of Middle-earth, where
+            Tolkien's most popular works — The Hobbit and The Lord of the Rings
+            — are set. After the success of The Hobbit, Tolkien's publisher
+            Stanley Unwin requested a sequel, and Tolkien offered a draft of
+            the stories that would later become The Silmarillion. Unwin
+            rejected this proposal, calling the draft obscure and "too Celtic",
+            so Tolkien began working on a new story that eventually became The
+            Lord of the Rings.
+        </field>
+        <field name="author_id" ref="module_5_qweb.tolkien_id"/>
+    </record>
+
+    <record id="lord_of_the_rings_id" model="library.book">
+        <field name="name">The Lord of the Rings</field>
+        <field name="book_description">
+            The Lord of the Rings is an epic[1] high-fantasy novel[a] by
+            English author and scholar J. R. R. Tolkien. Set in Middle-earth,
+            intended to be Earth at some distant time in the past, the story
+            began as a sequel to Tolkien's 1937 children's book The Hobbit, but
+            eventually developed into a much larger work. Written in stages
+            between 1937 and 1949, The Lord of the Rings is one of the
+            best-selling books ever written, with over 150 million copies sold.
+        </field>
+        <field name="author_id" ref="module_5_qweb.tolkien_id"/>
+    </record>
+
+    <record id="hobbit_id" model="library.book">
+        <field name="name">The Hobbit</field>
+        <field name="book_description">
+            The Hobbit, or There and Back Again is a children's fantasy novel
+            by English author J. R. R. Tolkien. It was published in 1937 to
+            wide critical acclaim, being nominated for the Carnegie Medal and
+            awarded a prize from the New York Herald Tribune for best juvenile
+            fiction. The book remains popular and is recognized as a classic in
+            children's literature.
+            The Hobbit is set within Tolkien's fictional universe and follows
+            the quest of home-loving Bilbo Baggins, the titular hobbit, to win
+            a share of the treasure guarded by a dragon named Smaug. Bilbo's
+            journey takes him from his light-hearted, rural surroundings into
+            more sinister territory.
+        </field>
+        <field name="author_id" ref="module_5_qweb.tolkien_id"/>
+    </record>
+</odoo>

@@ -1,0 +1,150 @@
+<odoo>
+    <menuitem id="module_5_qwebmenu_library_root"
+              name="Library"
+              active="True"
+              web_icon="module_5_qweb,static/description/icon.png"
+              sequence="111"/>
+
+    <menuitem id="module_5_qweb_book_menu"
+              name="Library"
+              parent="module_5_qwebmenu_library_root"
+              sequence="1"/>
+
+    <record id="module_5_qweb_book_form_view" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form string="Book">
+                <header>
+                    <button string="Confirm" name="set_confirm" type="object" class="oe_highlight"/>
+                </header>
+                <sheet string="Books">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="author_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="author" string="Description">
+                            <field name="book_description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="module_5_qweb_book_tree_view" model="ir.ui.view">
+        <field name="name">library.book.list</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="book_description"/>
+                <field name="author_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="module_5_qweb_book_action" model="ir.actions.act_window">
+        <field name="name">Book</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="module_5_qwebaction__book_tree"
+            model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="module_5_qweb_book_tree_view"/>
+        <field name="act_window_id" ref="module_5_qweb_book_action"/>
+    </record>
+
+    <record id="module_5_qwebaction__book_form"
+            model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="module_5_qweb_book_form_view"/>
+        <field name="act_window_id" ref="module_5_qweb_book_action"/>
+    </record>
+
+    <menuitem id="module_5_qwebmenu__book"
+              name="Books"
+              parent="module_5_qweb_book_menu"
+              action="module_5_qweb_book_action"
+              sequence="1"/>
+
+
+    <record id="module_5_qwebauthor_form_view" model="ir.ui.view">
+        <field name="name">author.of.book.form</field>
+        <field name="model">author.of.book</field>
+        <field name="arch" type="xml">
+            <form string="Book">
+                <header>
+                    <button string="Confirm" name="set_confirm" type="object" class="oe_highlight"/>
+                </header>
+                <sheet string="Authors">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="last_name"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="author" string="Biography">
+                            <field name="biography_text"/>
+                        </page>
+                        <page name="author" string="Books">
+                            <field name="book_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="module_5_qwebauthor_tree_view" model="ir.ui.view">
+        <field name="name">author.of.book.list</field>
+        <field name="model">author.of.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="last_name"/>
+                <field name="book_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="module_5_qwebauthor_action" model="ir.actions.act_window">
+        <field name="name">Authors</field>
+        <field name="res_model">author.of.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="module_5_qwebaction_author_tree"
+            model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="module_5_qwebauthor_tree_view"/>
+        <field name="act_window_id" ref="module_5_qwebauthor_action"/>
+    </record>
+
+    <record id="module_5_qwebaction_author_form"
+            model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="module_5_qwebauthor_form_view"/>
+        <field name="act_window_id" ref="module_5_qwebauthor_action"/>
+    </record>
+
+    <menuitem id="module_5_qwebmenu_author"
+              name="Authors"
+              parent="module_5_qweb_book_menu"
+              action="module_5_qwebauthor_action"
+              sequence="2"/>
+</odoo>
