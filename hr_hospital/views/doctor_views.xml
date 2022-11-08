@@ -24,6 +24,7 @@
                 <field name="name"/>
                 <field name="specialty_id"/>
                 <field name="is_intern"/>
+                <field name="mentor_id" optional="hide"/>
             </tree>
         </field>
     </record>
