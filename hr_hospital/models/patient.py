@@ -99,7 +99,7 @@ class Patient(models.Model):
     def open_patient_diagnosis_action(self):
         self.ensure_one()
         return {
-            'name': _('Patient Visits'),
+            'name': _('Patient Diagnoses'),
             'type': 'ir.actions.act_window',
             'view_type': 'list,form',
             'view_mode': 'list,form',
@@ -114,7 +114,7 @@ class Patient(models.Model):
     def open_patient_medical_test_action(self):
         self.ensure_one()
         return {
-            'name': _('Patient Visits'),
+            'name': _('Patient Tests'),
             'type': 'ir.actions.act_window',
             'view_type': 'list,form',
             'view_mode': 'list,form',
