@@ -45,6 +45,8 @@ class AuthorOfBook(models.Model):
         comodel_name='library.book',
         inverse_name='author_id',
         string=_('Books'), )
+    color = fields.Integer(
+        string=_('Color'), )
 
     def set_confirm(self):
         pass
