@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="complete_name"/>
+                <field name="color" widget="color"/>
             </tree>
         </field>
     </record>
@@ -20,6 +21,7 @@
                     <group>
                         <field name="name"/>
                         <field name="parent_id"/>
+                        <field name="color" widget="color"/>
                     </group>
                 </sheet>
             </form>

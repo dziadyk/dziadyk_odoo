@@ -51,3 +51,21 @@ class Doctor(models.Model):
             'context': {
                 'default_doctor_id': self.id, },
         }
+
+    def get_visit_list_report(self):
+        self.ensure_one()
+        visit_list = self.env['hr.hosp.visit'].search(
+            args=[('doctor_id', '=', self.id),
+                  ('take_place', '=', 'True')],
+            order='reception_time desc',
+            limit=10, )
+        return visit_list
+
+    def get_private_patient_report(self):
+        self.ensure_one()
+        visit_list = self.env['hr.hosp.visit'].search(
+            args=[('patient_id', 'in', self.patient_ids.ids),
+                  ('take_place', '=', 'True')],
+            order='reception_time desc',
+            limit=10, )
+        return visit_list

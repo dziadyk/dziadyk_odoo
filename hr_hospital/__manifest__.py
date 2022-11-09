@@ -11,6 +11,7 @@
 
     'depends': [
         'base',
+        "web",
     ],
 
     'data': [
@@ -34,6 +35,8 @@
         'wizard/move_visit_wizard_views.xml',
         'wizard/create_planed_visit_wizard_views.xml',
         'wizard/doctor_schedule_wizard_views.xml',
+        'report/doctor_report_templates.xml',
+        'report/doctor_report_views.xml',
     ],
 
     'images': [

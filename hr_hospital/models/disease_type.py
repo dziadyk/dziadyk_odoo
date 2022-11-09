@@ -20,6 +20,8 @@ class DiseaseType(models.Model):
         comodel_name='hr.hosp.disease.type',
         string='Disease Type', ondelete='cascade', )
     parent_path = fields.Char()
+    color = fields.Char(
+        default='#000000', )
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):

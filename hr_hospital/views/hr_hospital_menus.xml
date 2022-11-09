@@ -14,8 +14,4 @@
               parent="hr_hosp_main_menu"
               name="Wizard" sequence="1100"/>
 
-    <menuitem id="hr_hosp_report_menu"
-              parent="hr_hosp_main_menu"
-              name="Reporting" sequence="1200"/>
-
 </odoo>
