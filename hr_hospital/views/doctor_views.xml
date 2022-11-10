@@ -43,14 +43,9 @@
                 <field name="email"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hosp_doctor_kanban">
-                            <t t-if="record.photo.raw_value">
-                                <div class="o_kanban_image_fill_left d-none d-md-block"
-                                     t-attf-style="background-image:url('#{kanban_image('hr.hosp.doctor', 'photo', record.id.raw_value)}')"/>
-                            </t>
-                            <t t-else="">
-                                <div class="o_kanban_image" alt="Avatar" t-att-src='_s + "/base/static/img/avatar.png"'/>
-                            </t>
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <div class="o_kanban_image_fill_left" alt="Photo"
+                                 t-attf-style="background-image:url('#{kanban_image('hr.hosp.doctor', 'photo', record.id.raw_value)}')"/>
                             <div class="oe_kanban_details">
                                 <strong class="o_kanban_record_title"><field name="display_name"/></strong>
                                 <div class="o_kanban_tags_section"/>
@@ -109,7 +104,7 @@
                                     <field name="email"/>
                                     <templates>
                                         <t t-name="kanban-box">
-                                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hosp_doctor_kanban">
+                                            <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
                                                 <t t-if="record.photo.raw_value">
                                                     <div class="o_kanban_image_fill_left d-none d-md-block"
                                                          t-attf-style="background-image:url('#{kanban_image('hr.hosp.doctor', 'photo', record.id.raw_value)}')"/>
