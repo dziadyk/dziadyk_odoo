@@ -61,7 +61,7 @@ class Doctor(models.Model):
             limit=10, )
         return visit_list
 
-    def get_private_patient_report(self):
+    def get_private_patient_visit_report(self):
         self.ensure_one()
         visit_list = self.env['hr.hosp.visit'].search(
             args=[('patient_id', 'in', self.patient_ids.ids),
@@ -69,3 +69,10 @@ class Doctor(models.Model):
             order='reception_time desc',
             limit=10, )
         return visit_list
+
+    def get_private_patient_list(self):
+        self.ensure_one()
+        patient_list = []
+        for obj in self.patient_ids:
+            patient_list.append(obj)
+        return patient_list

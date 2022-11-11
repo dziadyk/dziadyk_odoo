@@ -87,7 +87,7 @@
             <br/>
 
             <div style="text-align:center;">
-                <t t-set="visit_list" t-value="rec.get_private_patient_report()"/>
+                <t t-set="visit_list" t-value="rec.get_private_patient_visit_report()"/>
                 <t t-if="visit_list">
                     <strong>Private Patient</strong>
                     <table style="width:100%;">

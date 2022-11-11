@@ -57,6 +57,22 @@
                                 <div>
                                     <button name="schedule_visit_action" class="btn btn-primary" type="object">Schedule a Visit</button>
                                 </div>
+
+<!--                                <div>-->
+<!--                                    <t t-set="patient_list" t-value="get_private_patient_list()"/>-->
+<!--                                    <t t-if="patient_list">-->
+<!--                                        <table>-->
+<!--                                            <tr>-->
+<!--                                                <td>-->
+<!--                                                    <strong>Patients:</strong>-->
+<!--                                                </td>-->
+<!--                                                <td>-->
+<!--                                                    <t t-esc="patient_list[0]"/>-->
+<!--                                                </td>-->
+<!--                                            </tr>-->
+<!--                                        </table>-->
+<!--                                    </t>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </t>
