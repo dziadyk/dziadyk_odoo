@@ -59,7 +59,7 @@
                                 </div>
 
 <!--                                <div>-->
-<!--                                    <t t-set="patient_list" t-value="get_private_patient_list()"/>-->
+<!--                                    <t t-set="patient_list" t-value="record.raw_value.get_private_patient_list()"/>-->
 <!--                                    <t t-if="patient_list">-->
 <!--                                        <table>-->
 <!--                                            <tr>-->
