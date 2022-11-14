@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="library_book_category_cooking_id" model="library.book.category">
+        <field name="name">Cooking</field>
+    </record>
+
+    <record id="library_book_category_horror_id" model="library.book.category">
+        <field name="name">Horror</field>
+    </record>
+
+    <record id="library_book_category_kids_id" model="library.book.category">
+        <field name="name">Kids</field>
+    </record>
+
+</odoo>

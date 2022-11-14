@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
     <record id="specialty_family_medicine_id" model="hr.hosp.specialty">

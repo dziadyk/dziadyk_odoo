@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
     <record id="medical_test_type_analysis_id" model="hr.hosp.medical.test.type">

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="library_book_joy_of_cooking_id" model="library.book">
+        <field name="name">Joy of Cooking</field>
+        <field name="category_id" ref="school_lesson_6_1.library_book_category_cooking_id"/>
+        <field name="reader_id" ref="school_lesson_6_1.res_partner_customer"/>
+        <field name="user_id" ref="base.user_demo"/>
+        <field name="taken_date" eval="datetime.today()"/>
+    </record>
+
+    <record id="library_book_shining_id" model="library.book">
+        <field name="name">The Shining</field>
+        <field name="category_id" ref="school_lesson_6_1.library_book_category_horror_id"/>
+        <field name="reader_id" ref="school_lesson_6_1.res_partner_customer"/>
+        <field name="user_id" ref="base.user_demo"/>
+        <field name="taken_date" eval="datetime.today()"/>
+    </record>
+
+    <record id="library_book_goodnight_moon_id" model="library.book">
+        <field name="name">Goodnight Moon</field>
+        <field name="category_id" ref="school_lesson_6_1.library_book_category_kids_id"/>
+        <field name="reader_id" ref="school_lesson_6_1.res_partner_customer"/>
+        <field name="user_id" ref="base.user_demo"/>
+        <field name="taken_date" eval="datetime.today()"/>
+    </record>
+
+</odoo>

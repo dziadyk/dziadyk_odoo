@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="school_lesson_6_1.library_book_joy_of_cooking_id" model="library.book">
+        <field name="name">Joy of Cooking (v2.0)</field>
+    </record>
+
+    <delete id="school_lesson_6_1.library_book_goodnight_moon_id" model="library.book"/>
+
+</odoo>
