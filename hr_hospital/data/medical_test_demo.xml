@@ -1,0 +1,59 @@
+<odoo>
+
+    <record id="medical_test_type_analysis_id" model="hr.hosp.medical.test.type">
+        <field name="name">Chemical Analysis</field>
+    </record>
+
+    <record id="medical_test_type_blood_id" model="hr.hosp.medical.test.type">
+        <field name="name">Blood Analysis</field>
+        <field name="parent_id" ref="hr_hospital.medical_test_type_analysis_id"/>
+    </record>
+
+    <record id="medical_test_type_toxicology_id" model="hr.hosp.medical.test.type">
+        <field name="name">Toxicology Test</field>
+        <field name="parent_id" ref="hr_hospital.medical_test_type_analysis_id"/>
+    </record>
+
+    <record id="medical_test_type_diagnostic_id" model="hr.hosp.medical.test.type">
+        <field name="name">Diagnostic imaging</field>
+    </record>
+
+    <record id="medical_test_type_tomography_id" model="hr.hosp.medical.test.type">
+        <field name="name">Tomography</field>
+        <field name="parent_id" ref="hr_hospital.medical_test_type_diagnostic_id"/>
+    </record>
+
+    <record id="medical_test_type_ultrasound_id" model="hr.hosp.medical.test.type">
+        <field name="name">Ultrasound</field>
+        <field name="parent_id" ref="hr_hospital.medical_test_type_diagnostic_id"/>
+    </record>
+
+
+    <record id="sample_type_probe_id" model="hr.hosp.sample.type">
+        <field name="name">Probe</field>
+    </record>
+
+    <record id="sample_type_image_id" model="hr.hosp.sample.type">
+        <field name="name">Image</field>
+    </record>
+
+
+    <record id="medical_test_1_id" model="hr.hosp.medical.test">
+        <field name="name">Ultrasound</field>
+        <field name="medical_test_type_id" ref="hr_hospital.medical_test_type_ultrasound_id"/>
+        <field name="patient_id" ref="hr_hospital.homer_simpson_id"/>
+        <field name="doctor_id" ref="hr_hospital.dr_frink_id"/>
+        <field name="sample_type_id" ref="hr_hospital.sample_type_probe_id"/>
+        <field name="report">Normal</field>
+    </record>
+
+    <record id="medical_test_2_id" model="hr.hosp.medical.test">
+        <field name="name">Blood Test</field>
+        <field name="medical_test_type_id" ref="hr_hospital.medical_test_type_blood_id"/>
+        <field name="patient_id" ref="hr_hospital.bart_simpson_id"/>
+        <field name="doctor_id" ref="hr_hospital.dr_charlie_id"/>
+        <field name="sample_type_id" ref="hr_hospital.sample_type_image_id"/>
+        <field name="report">Normal</field>
+    </record>
+
+</odoo>

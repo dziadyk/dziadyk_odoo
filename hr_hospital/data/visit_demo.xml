@@ -1,0 +1,23 @@
+<odoo>
+
+<!--    <record id="visit_1_id" model="hr.hosp.visit">-->
+<!--        <field name="planned_date" eval="datetime.today()"/>-->
+<!--        <field name="planned_time">10.00</field>-->
+<!--        <field name="reception_time" eval="datetime.now()"/>-->
+<!--        <field name="take_place" eval="True"/>-->
+<!--        <field name="doctor_id" ref="hr_hospital.dr_frink_id"/>-->
+<!--        <field name="patient_id" ref="hr_hospital.homer_simpson_id"/>-->
+<!--        <field name="diagnosis_ids" eval="[Command.link(ref('hr_hospital.diagnosis_1_id'))]"/>-->
+<!--    </record>-->
+
+<!--    <record id="visit_2_id" model="hr.hosp.visit">-->
+<!--        <field name="planned_date" eval="datetime.today()"/>-->
+<!--        <field name="planned_time">12.00</field>-->
+<!--        <field name="reception_time" eval="datetime.now()"/>-->
+<!--        <field name="take_place" eval="True"/>-->
+<!--        <field name="doctor_id" ref="hr_hospital.dr_charlie_id"/>-->
+<!--        <field name="patient_id" ref="hr_hospital.bart_simpson_id"/>-->
+<!--        <field name="diagnosis_ids" eval="[Command.link(ref('hr_hospital.diagnosis_2_id'))]"/>-->
+<!--    </record>-->
+
+</odoo>

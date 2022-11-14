@@ -1,0 +1,23 @@
+<odoo>
+
+    <record id="dr_frink_id" model="hr.hosp.doctor">
+        <field name="name">dr.Frink</field>
+        <field name="gender">male</field>
+        <field name="phone">5698745</field>
+        <field name="email">frink@gmail.com</field>
+        <field name="specialty_id" ref="hr_hospital.specialty_family_medicine_id"/>
+        <field name="photo" type="base64" file="hr_hospital/static/demo/dr-Frink.png"/>
+    </record>
+
+    <record id="dr_charlie_id" model="hr.hosp.doctor">
+        <field name="name">dr.Charlie</field>
+        <field name="gender">male</field>
+        <field name="phone">2594178</field>
+        <field name="email">charlie@gmail.com</field>
+        <field name="specialty_id" ref="hr_hospital.specialty_pediatric_id"/>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="hr_hospital.dr_frink_id"/>
+        <field name="photo" type="base64" file="hr_hospital/static/demo/dr-Charlie.png"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,11 @@
+<odoo>
+
+    <record id="specialty_family_medicine_id" model="hr.hosp.specialty">
+        <field name="name">Family Medicine</field>
+    </record>
+
+    <record id="specialty_pediatric_id" model="hr.hosp.specialty">
+        <field name="name">Pediatric</field>
+    </record>
+
+</odoo>

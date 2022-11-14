@@ -1,0 +1,29 @@
+<odoo>
+
+    <record id="homer_simpson_id" model="hr.hosp.patient">
+        <field name="name">Homer Simpson</field>
+        <field name="gender">male</field>
+        <field name="phone">7778899</field>
+        <field name="email">homer@gmail.com</field>
+        <field name="birthday" eval="datetime(1985, 10, 10)"/>
+        <field name="passport">lf116678</field>
+        <field name="doctor_id" ref="hr_hospital.dr_frink_id"/>
+        <field name="emergency_contact_ids" eval="[Command.link(ref('hr_hospital.contact_marge_id')),
+                                                   Command.link(ref('hr_hospital.contact_lisa_id'))]"/>
+        <field name="photo" type="base64" file="hr_hospital/static/demo/Homer-Simpson.png"/>
+    </record>
+
+    <record id="bart_simpson_id" model="hr.hosp.patient">
+        <field name="name">Bart Simpson</field>
+        <field name="gender">male</field>
+        <field name="phone">6795324</field>
+        <field name="email">bart@gmail.com</field>
+        <field name="birthday" eval="datetime(2012, 10, 10)"/>
+        <field name="passport">qi671455</field>
+        <field name="doctor_id" ref="hr_hospital.dr_charlie_id"/>
+        <field name="emergency_contact_ids" eval="[Command.link(ref('hr_hospital.contact_lisa_id')),
+                                                   Command.link(ref('hr_hospital.contact_maggie_id'))]"/>
+        <field name="photo" type="base64" file="hr_hospital/static/demo/Bart-Simpson.png"/>
+    </record>
+
+</odoo>

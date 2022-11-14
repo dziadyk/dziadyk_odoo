@@ -1,0 +1,22 @@
+<odoo>
+
+    <record id="diagnosis_1_id" model="hr.hosp.diagnosis">
+        <field name="date" eval="datetime.now()"/>
+        <field name="patient_id" ref="hr_hospital.homer_simpson_id"/>
+        <field name="doctor_id" ref="hr_hospital.dr_frink_id"/>
+        <field name="disease_id" ref="hr_hospital.disease_tuberculosis_id"/>
+        <field name="medical_test_ids" eval="[Command.link(ref('hr_hospital.medical_test_1_id'))]"/>
+        <field name="treatment">Normal</field>
+    </record>
+
+    <record id="diagnosis_2_id" model="hr.hosp.diagnosis">
+        <field name="date" eval="datetime.now()"/>
+        <field name="patient_id" ref="hr_hospital.bart_simpson_id"/>
+        <field name="doctor_id" ref="hr_hospital.dr_charlie_id"/>
+        <field name="disease_id" ref="hr_hospital.disease_anaemia_id"/>
+        <field name="medical_test_ids" eval="[Command.link(ref('hr_hospital.medical_test_2_id'))]"/>
+        <field name="treatment">Normal</field>
+        <field name="mentor_comment">Normal</field>
+    </record>
+
+</odoo>

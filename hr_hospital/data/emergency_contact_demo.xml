@@ -1,0 +1,27 @@
+<odoo>
+
+    <record id="contact_marge_id" model="hr.hosp.emergency.contact">
+        <field name="name">Marge Simpson</field>
+        <field name="gender">female</field>
+        <field name="phone">5557894</field>
+        <field name="email">marge@gmail.com</field>
+        <field name="photo" type="base64" file="hr_hospital/static/demo/Marge-Simpson.png"/>
+    </record>
+
+    <record id="contact_lisa_id" model="hr.hosp.emergency.contact">
+        <field name="name">Lisa Simpson</field>
+        <field name="gender">female</field>
+        <field name="phone">4523963</field>
+        <field name="email">lisa@gmail.com</field>
+        <field name="photo" type="base64" file="hr_hospital/static/demo/Lisa-Simpson.png"/>
+    </record>
+
+    <record id="contact_maggie_id" model="hr.hosp.emergency.contact">
+        <field name="name">Maggie Simpson</field>
+        <field name="gender">female</field>
+        <field name="phone">5557894</field>
+        <field name="email">maggie@gmail.com</field>
+        <field name="photo" type="base64" file="hr_hospital/static/demo/Maggie-Simpson.png"/>
+    </record>
+
+</odoo>

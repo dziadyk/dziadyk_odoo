@@ -39,6 +39,17 @@
         'report/doctor_report_views.xml',
     ],
 
+    'demo': [
+        'data/emergency_contact_demo.xml',
+        'data/specialty_demo.xml',
+        'data/doctor_demo.xml',
+        'data/patient_demo.xml',
+        'data/disease_demo.xml',
+        'data/medical_test_demo.xml',
+        'data/diagnosis_demo.xml',
+        'data/visit_demo.xml',
+    ],
+
     'images': [
         'static/description/icon.png'
     ]

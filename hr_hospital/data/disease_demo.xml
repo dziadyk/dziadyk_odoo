@@ -1,0 +1,51 @@
+<odoo>
+
+    <record id="disease_type_congenital_id" model="hr.hosp.disease.type">
+        <field name="name">Congenital</field>
+    </record>
+
+    <record id="disease_type_contagious_id" model="hr.hosp.disease.type">
+        <field name="name">Contagious</field>
+        <field name="parent_id" ref="hr_hospital.disease_type_congenital_id"/>
+    </record>
+
+    <record id="disease_type_non_contagious_id" model="hr.hosp.disease.type">
+        <field name="name">Non-Contagious</field>
+        <field name="parent_id" ref="hr_hospital.disease_type_congenital_id"/>
+    </record>
+
+    <record id="disease_type_acquired_id" model="hr.hosp.disease.type">
+        <field name="name">Acquired</field>
+    </record>
+
+    <record id="disease_type_organic_id" model="hr.hosp.disease.type">
+        <field name="name">Organic</field>
+        <field name="parent_id" ref="hr_hospital.disease_type_acquired_id"/>
+    </record>
+
+    <record id="disease_type_deficiency_id" model="hr.hosp.disease.type">
+        <field name="name">Deficiency</field>
+        <field name="parent_id" ref="hr_hospital.disease_type_acquired_id"/>
+    </record>
+
+    <record id="disease_smallpox_id" model="hr.hosp.disease">
+        <field name="name">Smallpox</field>
+        <field name="disease_type_id" ref="hr_hospital.disease_type_contagious_id"/>
+    </record>
+
+    <record id="disease_tuberculosis_id" model="hr.hosp.disease">
+        <field name="name">Tuberculosis</field>
+        <field name="disease_type_id" ref="hr_hospital.disease_type_non_contagious_id"/>
+    </record>
+
+    <record id="disease_heart_id" model="hr.hosp.disease">
+        <field name="name">Heart</field>
+        <field name="disease_type_id" ref="hr_hospital.disease_type_organic_id"/>
+    </record>
+
+    <record id="disease_anaemia_id" model="hr.hosp.disease">
+        <field name="name">Anaemia</field>
+        <field name="disease_type_id" ref="hr_hospital.disease_type_deficiency_id"/>
+    </record>
+
+</odoo>
