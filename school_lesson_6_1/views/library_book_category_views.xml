@@ -35,7 +35,7 @@
         <field name="name">Category</field>
         <field name="parent_id" ref="menu_library_root"/>
         <field name="action" ref="action_library_book_category"/>
-        <field name="sequence" eval="20"/>
+        <field name="sequence" eval="11"/>
     </record>
 
 </odoo>

@@ -20,6 +20,7 @@
         'security/library_book_groups.xml',
         'security/ir.model.access.csv',
         'security/library_book_security.xml',
+        'security/library_author_security.xml',
         'views/library_author_views.xml',
         'views/library_book_views.xml',
     ],

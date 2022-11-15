@@ -1,13 +1,24 @@
-from odoo import fields, models
+import datetime
+from odoo import api, fields, models
 
 
 class LibraryAuthor(models.Model):
     _name = 'library.author'
-    _description = 'Library Book Authors'
+    _description = 'Library Authors'
 
     first_name = fields.Char(required=True)
     last_name = fields.Char(required=True)
     birth_date = fields.Date('Birthday')
+    trainee_access = fields.Boolean(compute='_compute_trainee_access',)
+
+    @api.depends('create_date')
+    def _compute_trainee_access(self):
+        for rec in self:
+            if (rec.create_date >
+                    datetime.datetime.now() + datetime.timedelta(days=-30)):
+                rec.trainee_access = True
+            else:
+                rec.trainee_access = False
 
     def name_get(self):
         return [(rec.id, "%s %s" % (
