@@ -3,7 +3,7 @@ from odoo.tests import tagged
 from odoo.exceptions import UserError
 
 
-@tagged('post_install', '-at_install', 'library')
+@tagged('post_install', '-at_install', 'library', 'odooschool')
 class TestAccessRights(TestCommon):
 
     def test_action_take_in(self):
@@ -17,3 +17,5 @@ class TestAccessRights(TestCommon):
         self.book_demo.with_user(self.library_admin).action_take_in()
         self.assertFalse(self.book_demo.reader_id)
 
+        # A library admin can scrap a book
+        self.book_demo.with_user(self.library_admin).action_scrap_book()

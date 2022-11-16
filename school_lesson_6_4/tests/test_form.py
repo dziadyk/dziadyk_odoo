@@ -15,3 +15,5 @@ class TestForm(TestCommon):
 
         book_form.reader_id = self.library_user.partner_id
         self.assertEqual(book_form.taken_date, fields.Date.today())
+
+        self.assertEqual(book_form.type, 'book')
