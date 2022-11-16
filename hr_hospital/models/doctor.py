@@ -69,10 +69,3 @@ class Doctor(models.Model):
             order='reception_time desc',
             limit=10, )
         return visit_list
-
-    def get_private_patient_list(self):
-        self.ensure_one()
-        patient_list = []
-        for obj in self.patient_ids:
-            patient_list.append(obj)
-        return patient_list
