@@ -6,8 +6,7 @@
     'name': 'School Lesson 6 6',
     'version': '15.0.1.0.0',
     'category': 'Extra Tools',
-    'summary': """Odoo School Lesson 6-6: Module publication on Odoo Apps. 
-    """,
+    'summary': """Odoo School Lesson 6-6: Module publication on Odoo Apps.""",
     'license': 'LGPL-3',
     'author': 'Garazd Creation',
     'website': 'https://garazd.biz',

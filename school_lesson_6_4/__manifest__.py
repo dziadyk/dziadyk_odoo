@@ -6,10 +6,8 @@
     'name': 'School Lesson 6 4',
     'version': '15.0.0.0.1',
     'category': 'Extra Tools',
-    'summary': """
-        Odoo School
-        Lesson 6-4: Writing tests. 
-    """,
+    'summary': """Odoo School
+    Lesson 6-4: Writing tests.""",
     'license': 'LGPL-3',
     'author': 'Garazd Creation',
     'website': 'https://garazd.biz',

@@ -1,0 +1,2 @@
+# dziadyk_odoo
+# module

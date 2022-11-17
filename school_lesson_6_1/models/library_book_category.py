@@ -6,5 +6,4 @@ class LibraryBookCategory(models.Model):
     _description = 'library Book Category'
 
     name = fields.Char()
-    active = fields.Boolean(
-        string='Active', default=True, )
+    active = fields.Boolean(default=True, )

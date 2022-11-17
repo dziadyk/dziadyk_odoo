@@ -1,5 +1,5 @@
 <odoo>
-    <data>
+
         <record id="paperformat_lowmargin" model="report.paperformat">
             <field name="name">European A4 low margin</field>
             <field name="default" eval="True"/>
@@ -38,5 +38,4 @@
             print_report_name="'Author - %s' % (object.name)"
         />
 
-    </data>
 </odoo>

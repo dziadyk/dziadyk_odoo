@@ -6,10 +6,8 @@
     'name': 'School Lesson 6 3',
     'version': '15.0.0.0.1',
     'category': 'Extra Tools',
-    'summary': """
-        Odoo School
-        Lesson 6-3: Translating. 
-    """,
+    'summary': """Odoo School
+    Lesson 6-3: Translating.""",
     'license': 'LGPL-3',
     'author': 'Garazd Creation',
     'website': 'https://garazd.biz',

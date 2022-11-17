@@ -1,10 +1,10 @@
 {
     "name": "Module 5. Reports and QWeb",
-    "description": """This module for learning Odoo Qweb.""",
     "summary": "learning Odoo Qweb",
     "website": "https://bjetpro.com",
     "author": "BJet",
     "category": "Education",
+    'license': 'OPL-1',
     "version": "15.0.1.0.0",
     "depends": [
         "web",

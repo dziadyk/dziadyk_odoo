@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
 
         <record id="category_library" model="ir.module.category">
             <field name="name">Library</field>
@@ -30,5 +29,4 @@
             <field name="comment">Administrators of the Library (full rights)</field>
         </record>
 
-    </data>
 </odoo>

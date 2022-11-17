@@ -17,5 +17,4 @@ class LibraryBook(models.Model):
             ('book', 'Book'),
             ('encyclopedia', 'Encyclopedia'),
         ],
-        string='Type',
     )
