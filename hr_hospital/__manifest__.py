@@ -6,7 +6,7 @@
     'website': "https://oneservice-consulting.com",
 
     'category': 'Human Resources',
-    'license': 'OPL-1',
+    'license': 'LGPL-3',
     'version': '15.0.1.0.0',
 
     'depends': [
