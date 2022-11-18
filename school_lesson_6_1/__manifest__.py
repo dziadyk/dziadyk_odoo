@@ -11,8 +11,8 @@
         Lesson 6-1: Master and demo data.
     """,
     'license': 'LGPL-3',
-    'author': 'Garazd Creation',
-    'website': 'https://garazd.biz',
+    'author': 'Dziadyk Volodymyr',
+    'website': 'https://oneservice-consulting.com',
     'depends': [
         'base',
     ],
@@ -31,7 +31,7 @@
         'data/library_book_demo.xml',
         'data/library_book_change_demo.xml',
     ],
-    'support': 'support@garazd.biz',
+    'support': 'dvol@oneservice.in.ua',
     'application': False,
     'installable': True,
     'auto_install': False,

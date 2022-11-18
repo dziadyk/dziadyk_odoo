@@ -17,9 +17,20 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
-                        <field name="name"/>
-                    </group>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_books_action" type="object"
+                                class="o_stat_button" icon="fa-folder">
+                            <div class="o_stat_info">
+                                <field name="book_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Books</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h3>
+                            <field name="name"/>
+                        </h3>
+                    </div>
                 </sheet>
             </form>
         </field>
