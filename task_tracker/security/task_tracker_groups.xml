@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+        <record id="category_task_tracker" model="ir.module.category">
+            <field name="name">Task Tracker</field>
+            <field name="description">User access levels for the Task Tracker</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_task_tracker_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="category_task_tracker"/>
+            <field name="comment">Users of the Task Tracker</field>
+            <field name="users" eval="[Command.link(ref('base.user_demo'))]"/>
+        </record>
+
+        <record id="group_task_tracker_lead" model="res.groups">
+            <field name="name">Lead</field>
+            <field name="category_id" ref="category_task_tracker"/>
+            <field name="implied_ids" eval="[(4, ref('group_task_tracker_user'))]"/>
+            <field name="comment">Team Lead of the Task Tracker</field>
+        </record>
+
+        <record id="group_task_tracker_admin" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="category_id" ref="category_task_tracker"/>
+            <field name="implied_ids" eval="[(4, ref('group_task_tracker_user'))]"/>
+            <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
+            <field name="comment">Administrators of the Task Tracker (full rights)</field>
+        </record>
+
+</odoo>

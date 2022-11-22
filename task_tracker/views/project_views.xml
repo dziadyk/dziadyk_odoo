@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="task_tracker_project_tree" model="ir.ui.view">
+        <field name="name">task.tracker.project.tree ()</field>
+        <field name="model">task.tracker.project</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="finish_date"/>
+                <field name="status"/>
+                <field name="partner_id"/>
+                <field name="cancellation_reason" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="task_tracker_project_form" model="ir.ui.view">
+        <field name="name">task.tracker.project.form ()</field>
+        <field name="model">task.tracker.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="oe_title">
+                    <h3>
+                        <field name="name" placeholder="Project Name"/>
+                    </h3>
+                    <field name="status"/>
+                </div>
+                <group>
+                    <field name="start_date"/>
+                    <field name="finish_date"/>
+                </group>
+                <group>
+                    <field name="partner_id"/>
+                    <field name="description"/>
+                </group>
+                <group>
+                    <field name="cancellation_reason" attrs="{'invisible': [('status', '!=', 'canceled')]}"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+     <record id="task_tracker_project_action" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">task.tracker.project</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="task_tracker_project_menu"
+               action="task_tracker_project_action"
+               parent="task_tracker_ticket_menu"
+               name="Projects" sequence="100"/>
+
+</odoo>
