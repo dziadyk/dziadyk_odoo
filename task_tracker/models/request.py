@@ -15,10 +15,13 @@ class Request(models.Model):
         required=True, )
     partner_id = fields.Many2one(
         comodel_name='res.partner',
-        compute='_compute_partner_id', )
+        compute='_compute_project_data', )
     description = fields.Text()
 
-    @api.depends('project_id')
-    def _compute_partner_id(self):
+    def _compute_project_data(self):
         for rec in self:
             rec.partner_id = rec.project_id.partner_id
+
+    @api.onchange('project_id')
+    def _onchange_project_id(self):
+        self.partner_id = self.project_id.partner_id

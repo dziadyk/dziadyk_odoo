@@ -21,6 +21,7 @@
         'views/task_tracker_menus.xml',
         'views/project_views.xml',
         'views/request_views.xml',
+        'views/task_views.xml',
         'views/team_views.xml',
     ],
 

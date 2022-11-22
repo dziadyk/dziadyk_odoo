@@ -24,7 +24,7 @@
         <record id="group_task_tracker_admin" model="res.groups">
             <field name="name">Administrator</field>
             <field name="category_id" ref="category_task_tracker"/>
-            <field name="implied_ids" eval="[(4, ref('group_task_tracker_user'))]"/>
+            <field name="implied_ids" eval="[(4, ref('group_task_tracker_lead'))]"/>
             <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
             <field name="comment">Administrators of the Task Tracker (full rights)</field>
         </record>

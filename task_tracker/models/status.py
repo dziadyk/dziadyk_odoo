@@ -19,7 +19,6 @@ class Status(models.Model):
         required=True, default='planed', )
     cancellation_reason = fields.Text()
 
-    @api.constrains('status', 'cancellation_reason')
     def constrains_cancellation_reason(self):
         for rec in self:
             if rec.status == 'canceled' and not rec.cancellation_reason:

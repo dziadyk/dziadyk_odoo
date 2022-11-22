@@ -23,3 +23,23 @@ class Team(models.Model):
             if not(rec.lead_id in rec.member_ids):
                 raise exceptions.ValidationError(
                     _('Lead must be a member of team'))
+            if not rec.member_ids:
+                raise exceptions.ValidationError(
+                    _('Team must have members'))
+
+    @api.model
+    def create(self, vals):
+        team = super(Team, self).create(vals)
+        # for user_id in team.member_ids:
+        #     self.env['res.users'].browse(user_id).write(
+        #         {'team_id': team.id})
+        return team
+
+    def write(self, vals):
+        team = super(Team, self).write(vals)
+        # for rec in self:
+        #     if 'member_ids' in vals:
+        #         for user_id in vals['member_ids'][0][2]:
+        #             self.env['res.users'].browse(user_id).write(
+        #                 {'team_id': rec})
+        return team
