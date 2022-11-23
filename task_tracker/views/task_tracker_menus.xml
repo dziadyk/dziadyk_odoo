@@ -6,12 +6,12 @@
               web_icon="task_tracker,static/description/icon.png"
               sequence="1"/>
 
-    <menuitem id="task_tracker_ticket_menu"
+    <menuitem id="task_tracker_projects_menu"
               parent="task_tracker_main_menu"
               name="Projects" sequence="1000"/>
 
-    <menuitem id="task_tracker_menu"
+    <menuitem id="task_tracker_teams_menu"
               parent="task_tracker_main_menu"
-              name="Tracker" sequence="1100"/>
+              name="Teams" sequence="1100"/>
 
 </odoo>

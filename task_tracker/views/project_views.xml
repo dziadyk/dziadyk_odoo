@@ -7,10 +7,12 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="partner_id"/>
                 <field name="start_date"/>
                 <field name="finish_date"/>
+                <field name="actual_time" widget="float_time"/>
+                <field name="planed_time" widget="float_time"/>
                 <field name="status"/>
-                <field name="partner_id"/>
                 <field name="cancellation_reason" optional="hide"/>
             </tree>
         </field>
@@ -21,23 +23,65 @@
         <field name="model">task.tracker.project</field>
         <field name="arch" type="xml">
             <form>
-                <div class="oe_title">
-                    <h3>
-                        <field name="name" placeholder="Project Name"/>
-                    </h3>
-                    <field name="status"/>
-                </div>
-                <group>
-                    <field name="start_date"/>
-                    <field name="finish_date"/>
-                </group>
-                <group>
-                    <field name="partner_id"/>
-                    <field name="description"/>
-                </group>
-                <group>
-                    <field name="cancellation_reason" attrs="{'invisible': [('status', '!=', 'canceled')]}"/>
-                </group>
+                <sheet>
+                    <div class="oe_title">
+                        <h3>
+                            <field name="name" placeholder="Project Name"/>
+                        </h3>
+                        <field name="status"/>
+                    </div>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="cancellation_reason" attrs="{'invisible': [('status', '!=', 'canceled')]}"/>
+                    </group>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="finish_date"/>
+                    </group>
+                    <group>
+                        <field name="partner_id"/>
+                    </group>
+                </sheet>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="actual_time" widget="float_time"/>
+                        </group>
+                        <group>
+                            <field name="planed_time" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                         <field name="request_ids" string="Requests">
+                             <tree>
+                                 <field name="name"/>
+                                 <field name="actual_time" widget="float_time"/>
+                                 <field name="planed_time" widget="float_time"/>
+                                 <field name="status"/>
+                             </tree>
+                             <form>
+                                <div class="oe_title">
+                                    <h3>
+                                        <field name="name" placeholder="Request Name"/>
+                                    </h3>
+                                    <field name="status"/>
+                                </div>
+                                <group>
+                                    <field name="cancellation_reason" attrs="{'invisible': [('status', '!=', 'canceled')]}"/>
+                                </group>
+                                <group>
+                                    <field name="description"/>
+                                </group>
+                                <group>
+                                    <field name="start_date"/>
+                                    <field name="finish_date"/>
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -51,7 +95,7 @@
 
     <menuitem id="task_tracker_project_menu"
                action="task_tracker_project_action"
-               parent="task_tracker_ticket_menu"
+               parent="task_tracker_projects_menu"
                name="Projects" sequence="100"/>
 
 </odoo>

@@ -30,16 +30,22 @@ class Team(models.Model):
     @api.model
     def create(self, vals):
         team = super(Team, self).create(vals)
-        # for user_id in team.member_ids:
-        #     self.env['res.users'].browse(user_id).write(
-        #         {'team_id': team.id})
+        for user_id in team.member_ids:
+            self.env['res.users'].browse(user_id.id).write(
+                {'team_id': team})
         return team
 
     def write(self, vals):
         team = super(Team, self).write(vals)
-        # for rec in self:
-        #     if 'member_ids' in vals:
-        #         for user_id in vals['member_ids'][0][2]:
-        #             self.env['res.users'].browse(user_id).write(
-        #                 {'team_id': rec})
+        for rec in self:
+            if 'member_ids' in vals:
+                for user_id in vals['member_ids'][0][2]:
+                    self.env['res.users'].browse(user_id).write(
+                        {'team_id': rec})
+                users = self.env['res.users'].search([
+                    ('team_id', '=', rec.id),
+                    ('id', 'not in', vals['member_ids'][0][2])])
+                for user in users:
+                    self.env['res.users'].browse(user.id).write(
+                        {'team_id': False})
         return team

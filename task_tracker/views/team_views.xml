@@ -24,12 +24,12 @@
                     </h3>
                 </div>
                 <group>
-                    <field name="member_ids">
+                    <field name="member_ids" domain="[('team_id','=', False)]">
                         <tree>
                             <field name="name"/>
                         </tree>
                     </field>
-                    <field name="lead_id" domain="[('id','in',member_ids)]"/>
+                    <field name="lead_id" domain="[('id','in', member_ids)]"/>
                 </group>
             </form>
         </field>
@@ -42,13 +42,9 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="task_tracker_team_main_menu"
-               action="task_tracker_team_action"
-               parent="task_tracker_main_menu"
-               name="Teams" sequence="200"/>
     <menuitem id="task_tracker_team_menu"
                action="task_tracker_team_action"
-               parent="task_tracker_menu"
-               name="Teams" sequence="200"/>
+               parent="task_tracker_teams_menu"
+               name="Teams" sequence="100"/>
 
 </odoo>

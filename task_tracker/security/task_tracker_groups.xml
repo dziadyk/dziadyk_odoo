@@ -15,7 +15,7 @@
         </record>
 
         <record id="group_task_tracker_lead" model="res.groups">
-            <field name="name">Lead</field>
+            <field name="name">Team Lead</field>
             <field name="category_id" ref="category_task_tracker"/>
             <field name="implied_ids" eval="[(4, ref('group_task_tracker_user'))]"/>
             <field name="comment">Team Lead of the Task Tracker</field>

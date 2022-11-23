@@ -17,11 +17,13 @@
 
     'data': [
         'security/task_tracker_groups.xml',
+        'security/task_tracker_security.xml',
         'security/ir.model.access.csv',
         'views/task_tracker_menus.xml',
         'views/project_views.xml',
         'views/request_views.xml',
         'views/task_views.xml',
+        'views/timesheet_views.xml',
         'views/team_views.xml',
     ],
 
