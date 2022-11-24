@@ -18,6 +18,19 @@
         </field>
     </record>
 
+    <record id="task_tracker_project_pivot" model="ir.ui.view">
+        <field name="name">task.tracker.project.pivot ()</field>
+        <field name="model">task.tracker.project</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="name" type="row"/>
+                <field name="partner_id" type="col"/>
+                <field name="actual_time" type="measure"/>
+                <field name="planed_time" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
     <record id="task_tracker_project_form" model="ir.ui.view">
         <field name="name">task.tracker.project.form ()</field>
         <field name="model">task.tracker.project</field>
@@ -90,7 +103,7 @@
         <field name="name">Projects</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">task.tracker.project</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,pivot,form</field>
     </record>
 
     <menuitem id="task_tracker_project_menu"

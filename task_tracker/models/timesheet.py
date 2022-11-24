@@ -26,13 +26,16 @@ class Timesheet(models.Model):
         required=True, )
     request_id = fields.Many2one(
         comodel_name='task.tracker.request',
-        compute='_compute_task_data', )
+        compute='_compute_task_data',
+        store=True, )
     project_id = fields.Many2one(
         comodel_name='task.tracker.project',
-        compute='_compute_task_data', )
+        compute='_compute_task_data',
+        store=True, )
     partner_id = fields.Many2one(
         comodel_name='res.partner',
-        compute='_compute_task_data', )
+        compute='_compute_task_data',
+        store=True, )
 
     comment = fields.Text()
 
@@ -74,3 +77,75 @@ class Timesheet(models.Model):
             if rec.actual_time == 0:
                 raise exceptions.ValidationError(
                     _('Actual Time can not be 00:00'))
+
+    @api.model
+    def create(self, vals):
+        timesheet = super(Timesheet, self).create(vals)
+
+        # task time
+        actual_time = timesheet.actual_time
+        time_list = self.env['task.tracker.timesheet'].search([
+            ('task_id', '=', timesheet.task_id.id),
+            ('id', '!=', timesheet.id)])
+        for time in time_list:
+            actual_time += time.actual_time
+        self.env['task.tracker.task'].browse(timesheet.task_id.id).write(
+            {'actual_time': actual_time})
+
+        # request time
+        actual_time = timesheet.actual_time
+        time_list = self.env['task.tracker.timesheet'].search([
+            ('request_id', '=', timesheet.request_id.id),
+            ('id', '!=', timesheet.id)])
+        for time in time_list:
+            actual_time += time.actual_time
+        self.env['task.tracker.request'].browse(timesheet.request_id.id).write(
+            {'actual_time': actual_time})
+
+        # project time
+        actual_time = timesheet.actual_time
+        time_list = self.env['task.tracker.timesheet'].search([
+            ('project_id', '=', timesheet.project_id.id),
+            ('id', '!=', timesheet.id)])
+        for time in time_list:
+            actual_time += time.actual_time
+        self.env['task.tracker.project'].browse(timesheet.project_id.id).write(
+            {'actual_time': actual_time})
+
+        return timesheet
+
+    def write(self, vals):
+        timesheet = super(Timesheet, self).write(vals)
+        for rec in self:
+
+            # task time
+            actual_time = rec.actual_time
+            time_list = self.env['task.tracker.timesheet'].search([
+                ('task_id', '=', rec.task_id.id),
+                ('id', '!=', rec.id)])
+            for time in time_list:
+                actual_time += time.actual_time
+            self.env['task.tracker.task'].browse(rec.task_id.id).write(
+                {'actual_time': actual_time})
+
+            # request time
+            actual_time = rec.actual_time
+            time_list = self.env['task.tracker.timesheet'].search([
+                ('request_id', '=', rec.request_id.id),
+                ('id', '!=', rec.id)])
+            for time in time_list:
+                actual_time += time.actual_time
+            self.env['task.tracker.request'].browse(rec.request_id.id).write(
+                {'actual_time': actual_time})
+
+            # project time
+            actual_time = rec.actual_time
+            time_list = self.env['task.tracker.timesheet'].search([
+                ('project_id', '=', rec.project_id.id),
+                ('id', '!=', rec.id)])
+            for time in time_list:
+                actual_time += time.actual_time
+            self.env['task.tracker.project'].browse(rec.project_id.id).write(
+                {'actual_time': actual_time})
+
+        return timesheet

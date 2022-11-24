@@ -16,12 +16,17 @@ class Request(models.Model):
         required=True, )
     partner_id = fields.Many2one(
         comodel_name='res.partner',
-        compute='_compute_project_data', )
+        compute='_compute_project_data',
+        store=True, )
     description = fields.Text()
     actual_time = fields.Float(
-        compute='_compute_time', )
+        compute='_compute_time',
+        compute_sudo=True,
+        store=True, )
     planed_time = fields.Float(
-        compute='_compute_time', )
+        compute='_compute_time',
+        compute_sudo=True,
+        store=True, )
     task_ids = fields.One2many(
         comodel_name='task.tracker.task',
         inverse_name='request_id', )
@@ -38,7 +43,9 @@ class Request(models.Model):
         for rec in self:
             rec.actual_time = 0
             rec.planed_time = 0
-            for task in rec.task_ids:
+            task_list = self.env['task.tracker.task'].search(
+                [('request_id', '=', rec.id)])
+            for task in task_list:
                 rec.actual_time += task.actual_time
                 rec.planed_time += task.planed_time
 
@@ -46,6 +53,8 @@ class Request(models.Model):
     def _onchange_task_ids(self):
         self.actual_time = 0
         self.planed_time = 0
-        for task in self.task_ids:
+        task_list = self.env['task.tracker.task'].search(
+            [('request_id', '=', self.id)])
+        for task in task_list:
             self.actual_time += task.actual_time
             self.planed_time += task.planed_time

@@ -16,9 +16,13 @@ class Project(models.Model):
         required=True, )
     description = fields.Text()
     actual_time = fields.Float(
-        compute='_compute_time', )
+        compute='_compute_time',
+        compute_sudo=True,
+        store=True, )
     planed_time = fields.Float(
-        compute='_compute_time', )
+        compute='_compute_time',
+        compute_sudo=True,
+        store=True,)
     request_ids = fields.One2many(
         comodel_name='task.tracker.request',
         inverse_name='project_id', )
