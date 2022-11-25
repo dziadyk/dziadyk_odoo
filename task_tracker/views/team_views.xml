@@ -24,7 +24,7 @@
                     </h3>
                 </div>
                 <group>
-                    <field name="member_ids" domain="[('team_id','=', False)]">
+                    <field name="member_ids" domain="['|',('team_id','=', False),('team_id','=', id)]">
                         <tree>
                             <field name="name"/>
                         </tree>

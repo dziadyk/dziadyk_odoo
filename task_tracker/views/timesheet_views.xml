@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="task_tracker_timesheet_search" model="ir.ui.view">
+        <field name="name">task.tracker.timesheet ()</field>
+        <field name="model">task.tracker.timesheet</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel view_types="tree">
+                    <field name="team_id" string="Teams" select="multi" enable_counters="1" icon="fa-users"/>
+                    <field name="responsible_id" string="Users" hierarchize="1" select="multi" enable_counters="1" icon="fa-user"/>
+                </searchpanel>
+                <filter name="my_task" string="My Tasks" domain="[('responsible_id', '=', uid)]"/>
+<!--                <filter name="my_team" string="My Team" domain="[('team_id', '=', uid.team_id)]"/>-->
+                <separator/>
+                <filter name="today" string="Today" domain="[('date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="last_week" string="Last Week" domain="[('date', '&gt;', (context_today()+relativedelta(weeks=-1)).strftime('%Y-%m-%d'))]"/>
+                <filter name="last_month" string="Last Month" domain="[('date', '&gt;', (context_today()+relativedelta(months=-1)).strftime('%Y-%m-%d'))]"/>
+            </search>
+        </field>
+    </record>
+
     <record id="task_tracker_timesheet_tree" model="ir.ui.view">
         <field name="name">task.tracker.timesheet.tree ()</field>
         <field name="model">task.tracker.timesheet</field>

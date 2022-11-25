@@ -68,7 +68,7 @@
         <record id="task_tracker_team_rule_user" model="ir.rule">
             <field name="name">Users can only view own Team</field>
             <field name="model_id" ref="model_task_tracker_team"/>
-            <field name="domain_force">[('id', '=', user.team_id)]</field>
+            <field name="domain_force">[('id', '=', user.team_id.id)]</field>
             <field name="groups" eval="[(4, ref('group_task_tracker_user'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -79,7 +79,7 @@
         <record id="task_tracker_team_rule_lead" model="ir.rule">
             <field name="name">Team Lead have rights only on own Team</field>
             <field name="model_id" ref="model_task_tracker_team"/>
-            <field name="domain_force">[('id', '=', user.team_id)]</field>
+            <field name="domain_force">[('id', '=', user.team_id.id)]</field>
             <field name="groups" eval="[(4, ref('group_task_tracker_lead'))]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_write" eval="True"/>

@@ -18,7 +18,8 @@ class Timesheet(models.Model):
         required=True, )
     team_id = fields.Many2one(
         comodel_name='task.tracker.team',
-        compute='_compute_team', )
+        compute='_compute_team',
+        store=True, )
     actual_time = fields.Float(
         required=True, )
     task_id = fields.Many2one(
@@ -46,7 +47,7 @@ class Timesheet(models.Model):
             rec.partner_id = rec.project_id.partner_id
 
     @api.onchange('task_id')
-    def _onchange_request_id(self):
+    def _onchange_task_id(self):
         self.request_id = self.task_id.request_id
         self.project_id = self.request_id.project_id
         self.partner_id = self.project_id.partner_id
@@ -84,33 +85,33 @@ class Timesheet(models.Model):
 
         # task time
         actual_time = timesheet.actual_time
-        time_list = self.env['task.tracker.timesheet'].search([
+        time_list = self.env['task.tracker.timesheet'].sudo().search([
             ('task_id', '=', timesheet.task_id.id),
             ('id', '!=', timesheet.id)])
         for time in time_list:
             actual_time += time.actual_time
-        self.env['task.tracker.task'].browse(timesheet.task_id.id).write(
-            {'actual_time': actual_time})
+        self.env['task.tracker.task'].browse(timesheet.task_id.id).\
+            sudo().write({'actual_time': actual_time})
 
         # request time
         actual_time = timesheet.actual_time
-        time_list = self.env['task.tracker.timesheet'].search([
+        time_list = self.env['task.tracker.timesheet'].sudo().search([
             ('request_id', '=', timesheet.request_id.id),
             ('id', '!=', timesheet.id)])
         for time in time_list:
             actual_time += time.actual_time
-        self.env['task.tracker.request'].browse(timesheet.request_id.id).write(
-            {'actual_time': actual_time})
+        self.env['task.tracker.request'].browse(timesheet.request_id.id).\
+            sudo().write({'actual_time': actual_time})
 
         # project time
         actual_time = timesheet.actual_time
-        time_list = self.env['task.tracker.timesheet'].search([
+        time_list = self.env['task.tracker.timesheet'].sudo().search([
             ('project_id', '=', timesheet.project_id.id),
             ('id', '!=', timesheet.id)])
         for time in time_list:
             actual_time += time.actual_time
-        self.env['task.tracker.project'].browse(timesheet.project_id.id).write(
-            {'actual_time': actual_time})
+        self.env['task.tracker.project'].browse(timesheet.project_id.id).\
+            sudo().write({'actual_time': actual_time})
 
         return timesheet
 
@@ -120,32 +121,32 @@ class Timesheet(models.Model):
 
             # task time
             actual_time = rec.actual_time
-            time_list = self.env['task.tracker.timesheet'].search([
+            time_list = self.env['task.tracker.timesheet'].sudo().search([
                 ('task_id', '=', rec.task_id.id),
                 ('id', '!=', rec.id)])
             for time in time_list:
                 actual_time += time.actual_time
-            self.env['task.tracker.task'].browse(rec.task_id.id).write(
-                {'actual_time': actual_time})
+            self.env['task.tracker.task'].browse(rec.task_id.id).\
+                sudo().write({'actual_time': actual_time})
 
             # request time
             actual_time = rec.actual_time
-            time_list = self.env['task.tracker.timesheet'].search([
+            time_list = self.env['task.tracker.timesheet'].sudo().search([
                 ('request_id', '=', rec.request_id.id),
                 ('id', '!=', rec.id)])
             for time in time_list:
                 actual_time += time.actual_time
-            self.env['task.tracker.request'].browse(rec.request_id.id).write(
-                {'actual_time': actual_time})
+            self.env['task.tracker.request'].browse(rec.request_id.id).\
+                sudo().write({'actual_time': actual_time})
 
             # project time
             actual_time = rec.actual_time
-            time_list = self.env['task.tracker.timesheet'].search([
+            time_list = self.env['task.tracker.timesheet'].sudo().search([
                 ('project_id', '=', rec.project_id.id),
                 ('id', '!=', rec.id)])
             for time in time_list:
                 actual_time += time.actual_time
-            self.env['task.tracker.project'].browse(rec.project_id.id).write(
-                {'actual_time': actual_time})
+            self.env['task.tracker.project'].browse(rec.project_id.id).\
+                sudo().write({'actual_time': actual_time})
 
         return timesheet
