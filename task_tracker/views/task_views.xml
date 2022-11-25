@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="task_tracker_task_search" model="ir.ui.view">
+        <field name="name">task.tracker.task ()</field>
+        <field name="model">task.tracker.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel view_types="tree,pivot,kanban">
+                    <field name="team_id" string="Teams" select="multi" enable_counters="1" icon="fa-users"/>
+                    <field name="responsible_id" string="Users" hierarchize="1" select="multi" enable_counters="1" icon="fa-user"/>
+                </searchpanel>
+                <filter name="my_task" string="My Tasks" domain="[('responsible_id', '=', uid)]"/>
+<!--                <filter name="my_team" string="My Team" domain="[('team_id', '=', uid.team_id)]"/>-->
+            </search>
+        </field>
+    </record>
+
     <record id="task_tracker_task_tree" model="ir.ui.view">
         <field name="name">task.tracker.task.tree ()</field>
         <field name="model">task.tracker.task</field>
@@ -36,6 +51,60 @@
                 <field name="actual_time" type="measure"/>
                 <field name="planed_time" type="measure"/>
             </pivot>
+        </field>
+    </record>
+
+    <record id="task_tracker_task_kanban" model="ir.ui.view">
+        <field name="name">task.tracker.task.kanban ()</field>
+        <field name="model">task.tracker.task</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" default_group_by="status" quick_create="true">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="responsible_id"/>
+                <field name="team_id"/>
+                <field name="request_id"/>
+                <field name="project_id"/>
+                <field name="partner_id"/>
+                <field name="actual_time"/>
+                <field name="planed_time"/>
+                <field name="start_date"/>
+                <field name="finish_date"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="display_name"/></strong>
+                                <div class="o_kanban_tags_section"/>
+                                <ul>
+                                    <li t-if="record.responsible_id.raw_value">
+                                        <field name="responsible_id"/>
+                                        <t t-if="record.team_id.raw_value">
+                                            <span>(</span>
+                                            <field name="team_id"/>
+                                            <span>)</span>
+                                        </t>
+                                    </li>
+                                    <li t-if="record.actual_time.raw_value">
+                                        <field name="actual_time" widget="float_time"/>
+                                        <t t-if="record.planed_time.raw_value">
+                                            <span>/</span>
+                                            <field name="planed_time" widget="float_time"/>
+                                        </t>
+                                    </li>
+                                    <li t-if="record.start_date.raw_value">
+                                        <field name="start_date" />
+                                        <t t-if="record.finish_date.raw_value">
+                                            <span>-</span>
+                                            <field name="finish_date"/>
+                                        </t>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
@@ -114,7 +183,7 @@
         <field name="name">Tasks</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">task.tracker.task</field>
-        <field name="view_mode">tree,pivot,form</field>
+        <field name="view_mode">kanban,tree,pivot,form</field>
     </record>
 
     <menuitem id="task_tracker_task_menu"

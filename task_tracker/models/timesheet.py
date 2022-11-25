@@ -18,7 +18,8 @@ class Timesheet(models.Model):
         required=True, )
     team_id = fields.Many2one(
         comodel_name='task.tracker.team',
-        compute='_compute_team',
+        related='responsible_id.team_id',
+        readonly=True,
         store=True, )
     actual_time = fields.Float(
         required=True, )
@@ -27,38 +28,39 @@ class Timesheet(models.Model):
         required=True, )
     request_id = fields.Many2one(
         comodel_name='task.tracker.request',
-        compute='_compute_task_data',
+        related='task_id.request_id',
+        readonly=True,
         store=True, )
     project_id = fields.Many2one(
         comodel_name='task.tracker.project',
-        compute='_compute_task_data',
+        related='task_id.request_id.project_id',
+        readonly=True,
         store=True, )
     partner_id = fields.Many2one(
         comodel_name='res.partner',
-        compute='_compute_task_data',
+        related='task_id.request_id.project_id.partner_id',
+        readonly=True,
         store=True, )
-
     comment = fields.Text()
 
-    def _compute_task_data(self):
-        for rec in self:
-            rec.request_id = rec.task_id.request_id
-            rec.project_id = rec.request_id.project_id
-            rec.partner_id = rec.project_id.partner_id
-
-    @api.onchange('task_id')
-    def _onchange_task_id(self):
-        self.request_id = self.task_id.request_id
-        self.project_id = self.request_id.project_id
-        self.partner_id = self.project_id.partner_id
-
-    def _compute_team(self):
-        for rec in self:
-            rec.team_id = rec.responsible_id.team_id
+    # def _compute_task_data(self):
+    #     for rec in self:
+    #         rec.request_id = rec.task_id.request_id
+    #         rec.project_id = rec.request_id.project_id
+    #         rec.partner_id = rec.project_id.partner_id
+    #
+    # @api.onchange('task_id')
+    # def _onchange_task_id(self):
+    #     return {
+    #         'value': {
+    #             'request_id': self.task_id.request_id,
+    #             'project_id': self.task_id.request_id.project_id,
+    #             'partner_id': self.task_id.request_id.project_id.partner_id
+    #         }
+    #     }
 
     @api.onchange ('responsible_id')
     def _onchange_responsible_id(self):
-        self.team_id = self.responsible_id.team_id
         if self.task_id and self.task_id.responsible_id != self.responsible_id:
             self.task_id = False
 
