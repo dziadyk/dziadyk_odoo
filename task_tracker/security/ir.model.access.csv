@@ -1,5 +1,7 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 
+access__task_tracker_status__user,access__task_tracker_status__user,model_task_tracker_status,base.group_user,1,0,0,0
+
 access__task_tracker_project__user,access__task_tracker_project__user,model_task_tracker_project,base.group_user,1,0,0,0
 access__task_tracker_project__system,access__task_tracker_project__system,model_task_tracker_project,base.group_system,1,1,1,1
 access__task_tracker_project__tracker_user,access__task_tracker_project__tracker_user,model_task_tracker_project,task_tracker.group_task_tracker_user,1,0,0,0

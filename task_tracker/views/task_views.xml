@@ -7,8 +7,8 @@
         <field name="arch" type="xml">
             <search>
                 <searchpanel view_types="tree,pivot,kanban">
-                    <field name="team_id" string="Teams" select="multi" enable_counters="1" icon="fa-users"/>
-                    <field name="responsible_id" string="Users" hierarchize="1" select="multi" enable_counters="1" icon="fa-user"/>
+                    <field name="team_id" string="Team" select="multi" enable_counters="1" icon="fa-users"/>
+                    <field name="responsible_id" string="User" hierarchize="1" select="multi" enable_counters="1" icon="fa-user"/>
                 </searchpanel>
                 <filter name="my_task" string="My Tasks" domain="[('responsible_id', '=', uid)]"/>
 <!--                <filter name="my_team" string="My Team" domain="[('team_id', '=', uid.team_id)]"/>-->
