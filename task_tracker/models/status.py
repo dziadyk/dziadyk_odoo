@@ -8,9 +8,6 @@ class Status(models.Model):
 
     active = fields.Boolean(
         default=True, )
-    start_date = fields.Date(
-        required=True, )
-    finish_date = fields.Date()
     status = fields.Selection(
         selection=[('planed', _('Planned')),
                    ('in_work', _('In Work')),
@@ -18,6 +15,9 @@ class Status(models.Model):
                    ('canceled', _('Canceled'))],
         required=True, default='planed', )
     cancellation_reason = fields.Text()
+    start_date = fields.Date(
+        required=True, )
+    finish_date = fields.Date()
 
     def constrains_cancellation_reason(self):
         for rec in self:

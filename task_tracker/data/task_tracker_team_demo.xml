@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="partner_prov" model="res.partner">
+            <field name="name">Прокопів Василь</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">prov@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_prov" model="res.users">
+            <field name="partner_id" ref="partner_prov"/>
+            <field name="login">prov</field>
+            <field name="password">prov</field>
+            <field name="signature" type="xml"><span>-- <br/>Прокопів Василь</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_admin')])]"/>
+        </record>
+
+
+
+        <record id="partner_pemi" model="res.partner">
+            <field name="name">Пемпусь Ірина</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">pemi@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_pemi" model="res.users">
+            <field name="partner_id" ref="partner_pemi"/>
+            <field name="login">pemi</field>
+            <field name="password">pemi</field>
+            <field name="signature" type="xml"><span>-- <br/>Пемпусь Ірина</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_lead')])]"/>
+        </record>
+
+        <record id="partner_dvol" model="res.partner">
+            <field name="name">Дзядик Володимир</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">dvol@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_dvol" model="res.users">
+            <field name="partner_id" ref="partner_dvol"/>
+            <field name="login">dvol</field>
+            <field name="password">dvol</field>
+            <field name="signature" type="xml"><span>-- <br/>Дзядик Володимир</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+        <record id="partner_kuke" model="res.partner">
+            <field name="name">Кухарук Едуард</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">kuke@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_kuke" model="res.users">
+            <field name="partner_id" ref="partner_kuke"/>
+            <field name="login">kuke</field>
+            <field name="password">kuke</field>
+            <field name="signature" type="xml"><span>-- <br/>Кухарук Едуард</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+        <record id="partner_myrn" model="res.partner">
+            <field name="name">Мирон Назар</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">myrn@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_myrn" model="res.users">
+            <field name="partner_id" ref="partner_myrn"/>
+            <field name="login">myrn</field>
+            <field name="password">myrn</field>
+            <field name="signature" type="xml"><span>-- <br/>Мирон Назар</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+        <record id="partner_bogo" model="res.partner">
+            <field name="name">Богута Олена</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">bogo@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_bogo" model="res.users">
+            <field name="partner_id" ref="partner_bogo"/>
+            <field name="login">bogo</field>
+            <field name="password">bodo</field>
+            <field name="signature" type="xml"><span>-- <br/>Богута Олена</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+
+
+        <record id="partner_kigo" model="res.partner">
+            <field name="name">Кривецький Ігор</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">kigo@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_kigo" model="res.users">
+            <field name="partner_id" ref="partner_kigo"/>
+            <field name="login">kigo</field>
+            <field name="password">kigo</field>
+            <field name="signature" type="xml"><span>-- <br/>Кривецький Ігор</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_lead')])]"/>
+        </record>
+
+        <record id="partner_verk" model="res.partner">
+            <field name="name">Верхівський Роман</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">verk@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_verk" model="res.users">
+            <field name="partner_id" ref="partner_verk"/>
+            <field name="login">verk</field>
+            <field name="password">verk</field>
+            <field name="signature" type="xml"><span>-- <br/>Верхівський Роман</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+        <record id="partner_malo" model="res.partner">
+            <field name="name">Малащук Олександр</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">malo@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_malo" model="res.users">
+            <field name="partner_id" ref="partner_malo"/>
+            <field name="login">malo</field>
+            <field name="password">malo</field>
+            <field name="signature" type="xml"><span>-- <br/>Малащук Олександр</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+        <record id="partner_mazo" model="res.partner">
+            <field name="name">Мазурик Оксана</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">mazo@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_mazo" model="res.users">
+            <field name="partner_id" ref="partner_mazo"/>
+            <field name="login">mazo</field>
+            <field name="password">mazo</field>
+            <field name="signature" type="xml"><span>-- <br/>Мазурик Оксана</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+        <record id="partner_adam" model="res.partner">
+            <field name="name">Адам Вікторія</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">YourCompany</field>
+            <field name="street">3575  Buena Vista Avenue</field>
+            <field name="city">Eugene</field>
+            <field name="state_id"  model="res.country.state" search="[('code','ilike','OR')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">adam@example.com</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="user_adam" model="res.users">
+            <field name="partner_id" ref="partner_adam"/>
+            <field name="login">adam</field>
+            <field name="password">adam</field>
+            <field name="signature" type="xml"><span>-- <br/>Адам Вікторія</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export'),
+                                                        ref('task_tracker.group_task_tracker_user')])]"/>
+        </record>
+
+
+
+        <record id="team_c" model="task.tracker.team">
+            <field name="name">Команда Ц</field>
+            <field name="member_ids" eval="[Command.set([ref('user_pemi'), ref('user_dvol'), ref('user_kuke'), ref('user_myrn'), ref('user_bogo')])]"/>
+            <field name="lead_id" ref="user_pemi"/>
+        </record>
+
+        <record id="team_s" model="task.tracker.team">
+            <field name="name">Команда Ша</field>
+            <field name="member_ids" eval="[Command.set([ref('user_kigo'), ref('user_verk'), ref('user_malo'), ref('user_mazo'), ref('user_adam')])]"/>
+            <field name="lead_id" ref="user_kigo"/>
+        </record>
+
+    </data>
+
+</odoo>

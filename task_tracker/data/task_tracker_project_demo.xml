@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="project_md" model="task.tracker.project">
+            <field name="name">Мій Двір</field>
+            <field name="partner_id" ref="base.res_partner_1"/>
+            <field name="description">Автоматизація виробництва</field>
+            <field name="status">in_work</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)" />
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)" />
+        </record>
+
+        <record id="project_lt" model="task.tracker.project">
+            <field name="name">Левітрейд</field>
+            <field name="partner_id" ref="base.res_partner_2"/>
+            <field name="description">Автоматизація продаж</field>
+            <field name="status">in_work</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)" />
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)" />
+        </record>
+
+    </data>
+
+</odoo>

@@ -42,9 +42,9 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="task_tracker_team_menu"
+    <menuitem id="task_tracker_team_main_menu"
                action="task_tracker_team_action"
-               parent="task_tracker_teams_menu"
-               name="Teams" sequence="100"/>
+               parent="task_tracker_main_menu"
+               name="Teams" sequence="3"/>
 
 </odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="request_md_start" model="task.tracker.request">
+            <field name="name">Дослідження вимог</field>
+            <field name="project_id" ref="project_md"/>
+            <field name="description">Дослідження вимог та складання ТЗ</field>
+            <field name="status">completed</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+        </record>
+
+        <record id="request_md_work" model="task.tracker.request">
+            <field name="name">Розробка</field>
+            <field name="project_id" ref="project_md"/>
+            <field name="description">Розробка згідно ТЗ</field>
+            <field name="status">in_work</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+        </record>
+
+        <record id="request_md_finish" model="task.tracker.request">
+            <field name="name">Впровадження</field>
+            <field name="project_id" ref="project_md"/>
+            <field name="description">Впровадження проекту та навчання користувачів</field>
+            <field name="status">planed</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)"/>
+        </record>
+
+        <record id="request_lt_start" model="task.tracker.request">
+            <field name="name">Дослідження вимог</field>
+            <field name="project_id" ref="project_lt"/>
+            <field name="description">Дослідження вимог та складання ТЗ</field>
+            <field name="status">completed</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+        </record>
+
+        <record id="request_lt_work" model="task.tracker.request">
+            <field name="name">Розробка</field>
+            <field name="project_id" ref="project_lt"/>
+            <field name="description">Розробка згідно ТЗ</field>
+            <field name="status">in_work</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+        </record>
+
+        <record id="request_lt_finish" model="task.tracker.request">
+            <field name="name">Впровадження</field>
+            <field name="project_id" ref="project_lt"/>
+            <field name="description">Впровадження проекту та навчання користувачів</field>
+            <field name="status">planed</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)"/>
+        </record>
+
+    </data>
+
+</odoo>

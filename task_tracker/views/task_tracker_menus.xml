@@ -8,10 +8,6 @@
 
     <menuitem id="task_tracker_projects_menu"
               parent="task_tracker_main_menu"
-              name="Projects" sequence="1000"/>
-
-    <menuitem id="task_tracker_teams_menu"
-              parent="task_tracker_main_menu"
-              name="Teams" sequence="1100"/>
+              name="Projects" sequence="2"/>
 
 </odoo>

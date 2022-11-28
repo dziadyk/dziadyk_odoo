@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="task_md_start_1" model="task.tracker.task">
+            <field name="name">Дослідження вимог</field>
+            <field name="request_id" ref="request_md_start"/>
+            <field name="description">Дослідження вимог</field>
+            <field name="status">completed</field>
+            <field name="responsible_id" ref="user_pemi"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+        </record>
+
+        <record id="task_md_start_2" model="task.tracker.task">
+            <field name="name">Складання ТЗ</field>
+            <field name="request_id" ref="request_md_start"/>
+            <field name="description">Складання ТЗ</field>
+            <field name="status">completed</field>
+            <field name="responsible_id" ref="user_bogo"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+        </record>
+
+        <record id="task_md_work_1" model="task.tracker.task">
+            <field name="name">Розробка</field>
+            <field name="request_id" ref="request_md_work"/>
+            <field name="description">Розробка згідно ТЗ</field>
+            <field name="status">in_work</field>
+            <field name="responsible_id" ref="user_dvol"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+        </record>
+
+        <record id="task_md_finish_1" model="task.tracker.task">
+            <field name="name">Впровадження</field>
+            <field name="request_id" ref="request_md_finish"/>
+            <field name="description">Впровадження проекту</field>
+            <field name="status">planed</field>
+            <field name="responsible_id" ref="user_kuke"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)"/>
+        </record>
+
+        <record id="task_md_finish_2" model="task.tracker.task">
+            <field name="name">Навчання</field>
+            <field name="request_id" ref="request_md_finish"/>
+            <field name="description">Навчання користувачів</field>
+            <field name="status">planed</field>
+            <field name="responsible_id" ref="user_myrn"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)"/>
+        </record>
+
+
+
+        <record id="task_lt_start_1" model="task.tracker.task">
+            <field name="name">Дослідження вимог</field>
+            <field name="request_id" ref="request_lt_start"/>
+            <field name="description">Дослідження вимог</field>
+            <field name="status">completed</field>
+            <field name="responsible_id" ref="user_kigo"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+        </record>
+
+        <record id="task_lt_start_2" model="task.tracker.task">
+            <field name="name">Складання ТЗ</field>
+            <field name="request_id" ref="request_lt_start"/>
+            <field name="description">Складання ТЗ</field>
+            <field name="status">completed</field>
+            <field name="responsible_id" ref="user_mazo"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(months=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+        </record>
+
+        <record id="task_lt_work_1" model="task.tracker.task">
+            <field name="name">Розробка</field>
+            <field name="request_id" ref="request_lt_work"/>
+            <field name="description">Розробка згідно ТЗ</field>
+            <field name="status">in_work</field>
+            <field name="responsible_id" ref="user_verk"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=-1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+        </record>
+
+        <record id="task_lt_finish_1" model="task.tracker.task">
+            <field name="name">Впровадження</field>
+            <field name="request_id" ref="request_lt_finish"/>
+            <field name="description">Впровадження проекту</field>
+            <field name="status">planed</field>
+            <field name="responsible_id" ref="user_malo"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)"/>
+        </record>
+
+        <record id="task_lt_finish_2" model="task.tracker.task">
+            <field name="name">Навчання</field>
+            <field name="request_id" ref="request_lt_finish"/>
+            <field name="description">Навчання користувачів</field>
+            <field name="status">planed</field>
+            <field name="responsible_id" ref="user_adam"/>
+            <field name="planed_time">40</field>
+            <field name="start_date" eval="datetime.today()+relativedelta(weeks=1)"/>
+            <field name="finish_date" eval="datetime.today()+relativedelta(months=1)"/>
+        </record>
+
+    </data>
+
+</odoo>

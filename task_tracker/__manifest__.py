@@ -27,6 +27,13 @@
         'views/team_views.xml',
     ],
 
+    'demo': [
+        'data/task_tracker_team_demo.xml',
+        'data/task_tracker_project_demo.xml',
+        'data/task_tracker_request_demo.xml',
+        'data/task_tracker_task_demo.xml',
+    ],
+
     'support': 'dvol@oneservice.in.ua',
     'images': ['static/description/banner.png', 'static/description/icon.png'],
     'application': True,
