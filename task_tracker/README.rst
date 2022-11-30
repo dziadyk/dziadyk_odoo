@@ -2,7 +2,7 @@
 Task Tracker
 ==========================
 
-This module help you trak your own tasks and manage team's task
+This module help you trak your own tasks and manage team's tasks
 
 
 Installation
