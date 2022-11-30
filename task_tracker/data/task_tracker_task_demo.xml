@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
 
         <record id="task_md_start_1" model="task.tracker.task">
             <field name="name">Дослідження вимог</field>
@@ -113,7 +112,5 @@
             <field name="start_date" eval="datetime.today()+relativedelta(weeks=1)"/>
             <field name="finish_date" eval="datetime.today()+relativedelta(months=1)"/>
         </record>
-
-    </data>
 
 </odoo>

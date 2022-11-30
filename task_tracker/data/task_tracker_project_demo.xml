@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
 
         <record id="project_md" model="task.tracker.project">
             <field name="name">Мій Двір</field>
@@ -19,7 +18,5 @@
             <field name="start_date" eval="datetime.today()+relativedelta(months=-1)" />
             <field name="finish_date" eval="datetime.today()+relativedelta(months=1)" />
         </record>
-
-    </data>
 
 </odoo>

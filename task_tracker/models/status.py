@@ -1,4 +1,4 @@
-from odoo import api, exceptions, fields, models, _
+from odoo import exceptions, fields, models, _
 
 
 class Status(models.Model):

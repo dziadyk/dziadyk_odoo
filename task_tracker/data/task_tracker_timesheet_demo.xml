@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <data noupdate="1">
+<odoo noupdate="1">
 
         <record id="timesheet_pemi_1" model="task.tracker.timesheet">
             <field name="date" eval="datetime.today()+relativedelta(months=-1)+relativedelta(days=1)"/>
@@ -168,7 +167,5 @@
             <field name="actual_time">8</field>
             <field name="task_id" ref="task_lt_work_1"/>
         </record>
-
-    </data>
 
 </odoo>

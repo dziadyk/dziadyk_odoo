@@ -43,7 +43,7 @@ class Timesheet(models.Model):
         store=True, )
     comment = fields.Text()
 
-    @api.onchange ('responsible_id')
+    @api.onchange('responsible_id')
     def _onchange_responsible_id(self):
         if self.task_id and self.task_id.responsible_id != self.responsible_id:
             self.task_id = False

@@ -20,7 +20,7 @@ class Team(models.Model):
     @api.constrains('member_ids', 'lead_id')
     def constrains_lead_is_member(self):
         for rec in self:
-            if not(rec.lead_id in rec.member_ids):
+            if rec.lead_id not in rec.member_ids:
                 raise exceptions.ValidationError(
                     _('Lead must be a member of team'))
             if not rec.member_ids:
