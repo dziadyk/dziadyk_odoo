@@ -28,6 +28,11 @@ class Project(models.Model):
         inverse_name='project_id', )
 
     def _compute_time(self):
+        """Actual and planned time stores in requests
+
+        :param None:
+        :return None:
+        """
         for rec in self:
             rec.actual_time = 0
             rec.planed_time = 0
@@ -37,6 +42,12 @@ class Project(models.Model):
 
     @api.onchange('request_ids')
     def _onchange_project_id(self):
+        """Actual and planned time stores in requests
+        And must be updated when request is changing
+
+        :param None:
+        :return None:
+        """
         self.actual_time = 0
         self.planed_time = 0
         for request in self.request_ids:

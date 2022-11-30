@@ -2,6 +2,9 @@ from odoo import exceptions, fields, models, _
 
 
 class Status(models.Model):
+    """Model for status, start and finish date
+    In projects, requests and tasks
+    """
     _name = 'task.tracker.status'
     _description = 'Status'
     _rec_name = 'status'
@@ -20,6 +23,11 @@ class Status(models.Model):
     finish_date = fields.Date()
 
     def constrains_cancellation_reason(self):
+        """Cancellation reason is a required field for canceled status
+
+        :param None:
+        :return None:
+        """
         for rec in self:
             if rec.status == 'canceled' and not rec.cancellation_reason:
                 raise exceptions.ValidationError(
