@@ -43,22 +43,6 @@ class Timesheet(models.Model):
         store=True, )
     comment = fields.Text()
 
-    # def _compute_task_data(self):
-    #     for rec in self:
-    #         rec.request_id = rec.task_id.request_id
-    #         rec.project_id = rec.request_id.project_id
-    #         rec.partner_id = rec.project_id.partner_id
-    #
-    # @api.onchange('task_id')
-    # def _onchange_task_id(self):
-    #     return {
-    #         'value': {
-    #             'request_id': self.task_id.request_id,
-    #             'project_id': self.task_id.request_id.project_id,
-    #             'partner_id': self.task_id.request_id.project_id.partner_id
-    #         }
-    #     }
-
     @api.onchange ('responsible_id')
     def _onchange_responsible_id(self):
         if self.task_id and self.task_id.responsible_id != self.responsible_id:

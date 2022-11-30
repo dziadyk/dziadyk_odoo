@@ -44,16 +44,6 @@ class Task(models.Model):
         inverse_name='task_id',
         readonly=True, )
 
-    # def _compute_request_data(self):
-    #     for rec in self:
-    #         rec.project_id = rec.request_id.project_id
-    #         rec.partner_id = rec.project_id.partner_id
-    #
-    # @api.onchange('request_id')
-    # def _onchange_request_id(self):
-    #     self.project_id = self.request_id.project_id
-    #     self.partner_id = self.project_id.partner_id
-
     def _compute_time(self):
         for rec in self:
             rec.actual_time = 0

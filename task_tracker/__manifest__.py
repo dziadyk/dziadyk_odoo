@@ -32,6 +32,7 @@
         'data/task_tracker_project_demo.xml',
         'data/task_tracker_request_demo.xml',
         'data/task_tracker_task_demo.xml',
+        'data/task_tracker_timesheet_demo.xml',
     ],
 
     'support': 'dvol@oneservice.in.ua',

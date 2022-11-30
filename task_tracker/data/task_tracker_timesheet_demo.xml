@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="timesheet_pemi_1" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(months=-1)+relativedelta(days=1)"/>
+            <field name="responsible_id" ref="user_pemi"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_1"/>
+        </record>
+        <record id="timesheet_pemi_2" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(months=-1)+relativedelta(days=3)"/>
+            <field name="responsible_id" ref="user_pemi"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_1"/>
+        </record>
+        <record id="timesheet_pemi_3" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(months=-1)+relativedelta(days=5)"/>
+            <field name="responsible_id" ref="user_pemi"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_1"/>
+        </record>
+        <record id="timesheet_pemi_4" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-5)"/>
+            <field name="responsible_id" ref="user_pemi"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_1"/>
+        </record>
+        <record id="timesheet_pemi_5" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-3)"/>
+            <field name="responsible_id" ref="user_pemi"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_1"/>
+        </record>
+
+
+        <record id="timesheet_bogo_1" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-5)"/>
+            <field name="responsible_id" ref="user_bogo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_2"/>
+        </record>
+        <record id="timesheet_bogo_2" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-4)"/>
+            <field name="responsible_id" ref="user_bogo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_2"/>
+        </record>
+        <record id="timesheet_bogo_3" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-3)"/>
+            <field name="responsible_id" ref="user_bogo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_2"/>
+        </record>
+        <record id="timesheet_bogo_4" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-2)"/>
+            <field name="responsible_id" ref="user_bogo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_2"/>
+        </record>
+        <record id="timesheet_bogo_5" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-1)"/>
+            <field name="responsible_id" ref="user_bogo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_start_2"/>
+        </record>
+
+
+        <record id="timesheet_dvol_1" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=1)"/>
+            <field name="responsible_id" ref="user_dvol"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_work_1"/>
+        </record>
+        <record id="timesheet_dvol_2" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=3)"/>
+            <field name="responsible_id" ref="user_dvol"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_work_1"/>
+        </record>
+        <record id="timesheet_dvol_3" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()"/>
+            <field name="responsible_id" ref="user_dvol"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_md_work_1"/>
+        </record>
+
+
+        <record id="timesheet_kigo_1" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(months=-1)+relativedelta(days=1)"/>
+            <field name="responsible_id" ref="user_kigo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_1"/>
+        </record>
+        <record id="timesheet_kigo_2" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(months=-1)+relativedelta(days=3)"/>
+            <field name="responsible_id" ref="user_kigo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_1"/>
+        </record>
+        <record id="timesheet_kigo_3" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(months=-1)+relativedelta(days=5)"/>
+            <field name="responsible_id" ref="user_kigo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_1"/>
+        </record>
+        <record id="timesheet_kigo_4" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-5)"/>
+            <field name="responsible_id" ref="user_kigo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_1"/>
+        </record>
+        <record id="timesheet_kigo_5" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-3)"/>
+            <field name="responsible_id" ref="user_kigo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_1"/>
+        </record>
+
+
+        <record id="timesheet_mazo_1" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-5)"/>
+            <field name="responsible_id" ref="user_mazo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_2"/>
+        </record>
+        <record id="timesheet_mazo_2" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-4)"/>
+            <field name="responsible_id" ref="user_mazo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_2"/>
+        </record>
+        <record id="timesheet_mazo_3" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-3)"/>
+            <field name="responsible_id" ref="user_mazo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_2"/>
+        </record>
+        <record id="timesheet_mazo_4" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-2)"/>
+            <field name="responsible_id" ref="user_mazo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_2"/>
+        </record>
+        <record id="timesheet_mazo_5" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=-1)"/>
+            <field name="responsible_id" ref="user_mazo"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_start_2"/>
+        </record>
+
+
+        <record id="timesheet_verk_1" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=1)"/>
+            <field name="responsible_id" ref="user_verk"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_work_1"/>
+        </record>
+        <record id="timesheet_verk_2" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()+relativedelta(weeks=-1)+relativedelta(days=3)"/>
+            <field name="responsible_id" ref="user_verk"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_work_1"/>
+        </record>
+        <record id="timesheet_verk_3" model="task.tracker.timesheet">
+            <field name="date" eval="datetime.today()"/>
+            <field name="responsible_id" ref="user_verk"/>
+            <field name="actual_time">8</field>
+            <field name="task_id" ref="task_lt_work_1"/>
+        </record>
+
+    </data>
+
+</odoo>

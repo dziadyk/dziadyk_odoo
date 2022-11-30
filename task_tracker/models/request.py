@@ -32,14 +32,6 @@ class Request(models.Model):
         comodel_name='task.tracker.task',
         inverse_name='request_id', )
 
-    # def _compute_project_data(self):
-    #     for rec in self:
-    #         rec.partner_id = rec.project_id.partner_id
-    #
-    # @api.onchange('project_id')
-    # def _onchange_project_id(self):
-    #     self.partner_id = self.project_id.partner_id
-
     def _compute_time(self):
         for rec in self:
             rec.actual_time = 0
