@@ -33,6 +33,11 @@ class Request(models.Model):
         inverse_name='request_id', )
 
     def _compute_time(self):
+        """Actual and planned time stores in tasks
+
+        :param None:
+        :return None:
+        """
         for rec in self:
             rec.actual_time = 0
             rec.planed_time = 0
@@ -44,6 +49,12 @@ class Request(models.Model):
 
     @api.onchange('task_ids')
     def _onchange_task_ids(self):
+        """Actual and planned time stores in tasks
+        And must be updated when task is changing
+
+        :param None:
+        :return None:
+        """
         self.actual_time = 0
         self.planed_time = 0
         task_list = self.env['task.tracker.task'].search(

@@ -2,6 +2,9 @@ from odoo import api, fields, models
 
 
 class Task(models.Model):
+    """Model for tasks
+    Task has planed time and compute actual from timesheet
+    """
     _name = 'task.tracker.task'
     _inherit = 'task.tracker.status'
     _description = 'Task'
@@ -45,6 +48,11 @@ class Task(models.Model):
         readonly=True, )
 
     def _compute_time(self):
+        """Actual time stores in timesheet
+
+        :param None:
+        :return None:
+        """
         for rec in self:
             rec.actual_time = 0
             for timesheet in rec.timesheet_ids:
@@ -52,6 +60,11 @@ class Task(models.Model):
 
     @api.model
     def create(self, vals):
+        """Update planed time in request and project
+
+        :param None:
+        :return None:
+        """
         task = super(Task, self).create(vals)
 
         # request time
@@ -77,6 +90,11 @@ class Task(models.Model):
         return task
 
     def write(self, vals):
+        """Update planed time in request and project
+
+        :param None:
+        :return None:
+        """
         task = super(Task, self).write(vals)
         for rec in self:
 

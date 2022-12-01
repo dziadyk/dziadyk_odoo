@@ -4,6 +4,9 @@ from odoo import api, exceptions, fields, models, _
 
 
 class Timesheet(models.Model):
+    """Model for timesheet.
+    Timesheet store user's task, actual time and date of work
+    """
     _name = 'task.tracker.timesheet'
     _description = 'Timesheet'
 
@@ -45,10 +48,20 @@ class Timesheet(models.Model):
 
     @api.onchange('responsible_id')
     def _onchange_responsible_id(self):
+        """Clean task
+
+        :param None:
+        :return None:
+        """
         if self.task_id and self.task_id.responsible_id != self.responsible_id:
             self.task_id = False
 
     def name_get(self):
+        """Name user + date + task
+
+        :param None:
+        :return None:
+        """
         name_list = []
         for rec in self:
             timesheet_name = "{} ({}) {}".format(
@@ -59,7 +72,12 @@ class Timesheet(models.Model):
         return name_list
 
     @api.constrains('actual_time')
-    def constrains_lead_is_member(self):
+    def constrains_actual_time(self):
+        """Actual time must be set
+
+        :param None:
+        :return None:
+        """
         for rec in self:
             if rec.actual_time == 0:
                 raise exceptions.ValidationError(
@@ -67,6 +85,11 @@ class Timesheet(models.Model):
 
     @api.model
     def create(self, vals):
+        """Update actual time in task, request and project
+
+        :param None:
+        :return None:
+        """
         timesheet = super(Timesheet, self).create(vals)
 
         # task time
@@ -102,6 +125,11 @@ class Timesheet(models.Model):
         return timesheet
 
     def write(self, vals):
+        """Update actual time in task, request and project
+
+        :param None:
+        :return None:
+        """
         timesheet = super(Timesheet, self).write(vals)
         for rec in self:
 

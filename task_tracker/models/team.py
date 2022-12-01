@@ -2,6 +2,9 @@ from odoo import api, exceptions, fields, models, _
 
 
 class Team(models.Model):
+    """Model for teams
+    Team has members and team lead the one of them
+    """
     _name = 'task.tracker.team'
     _description = 'Team'
 
@@ -19,6 +22,11 @@ class Team(models.Model):
 
     @api.constrains('member_ids', 'lead_id')
     def constrains_lead_is_member(self):
+        """Lead must be a member of team
+
+        :param None:
+        :return None:
+        """
         for rec in self:
             if rec.lead_id not in rec.member_ids:
                 raise exceptions.ValidationError(
@@ -29,6 +37,11 @@ class Team(models.Model):
 
     @api.model
     def create(self, vals):
+        """Update res.users - write team_id
+
+        :param None:
+        :return None:
+        """
         team = super(Team, self).create(vals)
         for user_id in team.member_ids:
             self.env['res.users'].browse(user_id.id).write(
@@ -36,6 +49,11 @@ class Team(models.Model):
         return team
 
     def write(self, vals):
+        """Update res.users - write or clean team_id
+
+        :param None:
+        :return None:
+        """
         team = super(Team, self).write(vals)
         for rec in self:
             if 'member_ids' in vals:

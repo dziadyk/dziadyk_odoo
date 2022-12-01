@@ -23,7 +23,7 @@ class Status(models.Model):
     finish_date = fields.Date()
 
     def constrains_cancellation_reason(self):
-        """Cancellation reason is a required field for canceled status
+        """Cancellation reason is a required field for status canceled
 
         :param None:
         :return None:
