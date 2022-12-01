@@ -41,7 +41,7 @@ class Project(models.Model):
                 rec.planed_time += request.planed_time
 
     @api.onchange('request_ids')
-    def _onchange_project_id(self):
+    def _onchange_request_ids(self):
         """Actual and planned time stores in requests
         And must be updated when request is changing
 

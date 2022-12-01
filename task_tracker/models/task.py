@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, exceptions, fields, models, _
 
 
 class Task(models.Model):
@@ -119,3 +119,17 @@ class Task(models.Model):
                 {'planed_time': planed_time})
 
         return task
+
+    @api.constrains('responsible_id')
+    def constrains_responsible(self):
+        """it is forbidden to change the responsible
+        when task has timesheet
+
+        :param None:
+        :return None:
+        """
+        for rec in self:
+            for timesheet in rec.timesheet_ids:
+                if rec.responsible_id != timesheet.responsible_id:
+                    raise exceptions.ValidationError(
+                        _('Task already contains timesheet'))
