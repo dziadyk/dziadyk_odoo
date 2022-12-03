@@ -53,3 +53,45 @@ class Project(models.Model):
         for request in self.request_ids:
             self.actual_time += request.actual_time
             self.planed_time += request.planed_time
+
+    def get_completed_task_list_report(self):
+        """Get task list with status completed
+
+        :param None:
+        :return list of tasks:
+        """
+        self.ensure_one()
+        task_list = self.env['task.tracker.task'].search(
+            args=[('project_id', '=', self.id),
+                  ('status', '=', 'completed')],
+            order='start_date asc',
+            limit=10, )
+        return task_list
+
+    def get_in_work_task_list_report(self):
+        """Get task list with status in work
+
+        :param None:
+        :return list of tasks:
+        """
+        self.ensure_one()
+        task_list = self.env['task.tracker.task'].search(
+            args=[('project_id', '=', self.id),
+                  ('status', '=', 'in_work')],
+            order='start_date asc',
+            limit=10, )
+        return task_list
+
+    def get_planed_task_list_report(self):
+        """Get task list with status planed
+
+        :param None:
+        :return list of tasks:
+        """
+        self.ensure_one()
+        task_list = self.env['task.tracker.task'].search(
+            args=[('project_id', '=', self.id),
+                  ('status', '=', 'planed')],
+            order='start_date asc',
+            limit=10, )
+        return task_list

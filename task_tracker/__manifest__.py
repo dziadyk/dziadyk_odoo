@@ -25,6 +25,8 @@
         'views/task_views.xml',
         'views/timesheet_views.xml',
         'views/team_views.xml',
+        'report/project_report_templates.xml',
+        'report/project_report_views.xml',
     ],
 
     'demo': [
